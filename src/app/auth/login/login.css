@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  height: 100vh;
+}
+
+.animate-fade-in {
+  animation: loginAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes loginAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px); 
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  scroll-behavior: smooth;
+}
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+.bg-overlay-deep {
+    background: linear-gradient(
+        135deg, 
+        rgba(0, 6, 19, 0) 0%, 
+        rgba(0, 31, 63, 0.88) 100%
+    );
+}
+
+input::placeholder {
+    color: rgba(116, 119, 127, 0.5);
+    font-size: 14px;
+}
