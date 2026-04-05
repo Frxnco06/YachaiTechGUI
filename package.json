@@ -1,4 +1,11 @@
 {
+  
+  "/api": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true
+  },
+  
   "name": "yachay-tech",
   "version": "0.0.0",
   "scripts": {

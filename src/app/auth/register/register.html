@@ -24,72 +24,102 @@
     </div>
   </section>
 
-<section class="w-full lg:w-1/2 flex flex-col bg-white overflow-y-auto">
-  
-  <div class="flex-grow flex flex-col items-center justify-center px-8 md:px-16 py-12">
-    
-    <div class="w-full max-w-[440px] animate-fade-in">
-      
-      <div class="mb-10 text-left">
-        <h3 class="text-3xl font-bold text-primary mb-2 font-headline">Iniciar Sesión en Yachay-<p></p>Pro</h3>
-        <p class="text-on-surface-variant font-body text-sm">Ingrese sus credenciales para registrarse.</p>
+  <section class="w-full lg:w-1/2 flex flex-col bg-white overflow-y-auto">
+
+    <div class="flex-grow flex flex-col items-center justify-center px-8 md:px-16 py-12">
+
+      <div class="w-full max-w-[440px] animate-fade-in">
+
+        <div class="mb-10 text-left">
+          <h3 class="text-3xl font-bold text-primary mb-2 font-headline">Iniciar Sesión en Yachay-<p></p>Pro</h3>
+          <p class="text-on-surface-variant font-body text-sm">Ingrese sus credenciales para registrarse.</p>
+        </div>
+
+        <form class="space-y-5" (ngSubmit)="registrarUsuario()">
+
+          <div class="space-y-2">
+            <label
+              class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">NOMBRES</label>
+            <input name="nombres" [(ngModel)]="nuevoUsuario.nombres"
+              class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 px-4 outline-none transition-all font-body placeholder:text-outline-variant/50"
+              placeholder="Franco" type="text" required>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="space-y-2">
+              <label
+                class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">APELLIDO
+                PATERNO</label>
+              <input name="apepa" [(ngModel)]="nuevoUsuario.apepa"
+                class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 px-4 outline-none transition-all font-body placeholder:text-outline-variant/50"
+                placeholder="Lopez" type="text" required>
+            </div>
+            <div class="space-y-2">
+              <label
+                class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">APELLIDO
+                MATERNO</label>
+              <input name="apema" [(ngModel)]="nuevoUsuario.apema"
+                class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 px-4 outline-none transition-all font-body placeholder:text-outline-variant/50"
+                placeholder="Moreno" type="text" required>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label
+              class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">CORREO
+              CORPORATIVO</label>
+            <input name="correo" [(ngModel)]="nuevoUsuario.correo"
+              class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 px-4 outline-none transition-all font-body placeholder:text-outline-variant/50"
+              placeholder="example@gmail.com" type="email" required>
+          </div>
+
+          <div class="space-y-2">
+            <label
+              class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">CONTRASEÑA</label>
+            <div class="relative group">
+              <span
+                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline/60 group-focus-within:text-secondary transition-colors text-[20px]">lock</span>
+              <input name="contrasena" [(ngModel)]="nuevoUsuario.contrasena"
+                class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 pl-12 pr-4 outline-none transition-all font-body placeholder:text-outline-variant/50"
+                placeholder="••••••••" type="password" required>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label
+              class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">CONFIRMAR
+              CONTRASEÑA</label>
+            <div class="relative group">
+              <span
+                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline/60 group-focus-within:text-secondary transition-colors text-[20px]">lock</span>
+              <input name="confirmar"
+                class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 pl-12 pr-4 outline-none transition-all font-body placeholder:text-outline-variant/50"
+                placeholder="••••••••" type="password">
+            </div>
+          </div>
+
+          <button
+            class="w-full bg-[#001c3a] text-white font-headline font-bold py-4 rounded-lg hover:opacity-95 active:scale-[0.98] transition-all shadow-lg mt-4"
+            type="submit">
+            Registrarse
+          </button>
+
+          <div class="text-center pt-4">
+            <p class="text-on-surface-variant text-sm font-medium font-body">
+              ¿Ya tienes una cuenta?
+              <a routerLink="/login"
+                class="text-secondary font-bold hover:underline underline-offset-4 cursor-pointer">Ingresar ahora</a>
+            </p>
+          </div>
+        </form>
       </div>
-
-      <form class="space-y-5">
-        <div class="space-y-2">
-          <label class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">INGRESAR DATOS</label>
-          <input class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 px-4 outline-none transition-all font-body placeholder:text-outline-variant/50" placeholder="Franco" type="text">
-        </div>
-
-        <div class="grid grid-cols-2 gap-4">
-          <div class="space-y-2">
-            <label class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">APELLIDO PATERNO</label>
-            <input class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 px-4 outline-none transition-all font-body placeholder:text-outline-variant/50" placeholder="Lopez" type="text">
-          </div>
-          <div class="space-y-2">
-            <label class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">APELLIDO MATERNO</label>
-            <input class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 px-4 outline-none transition-all font-body placeholder:text-outline-variant/50" placeholder="Moreno" type="text">
-          </div>
-        </div>
-
-        <div class="space-y-2">
-          <label class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">CORREO CORPORATIVO</label>
-          <input class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 px-4 outline-none transition-all font-body placeholder:text-outline-variant/50" placeholder="example@gmail.com" type="email">
-        </div>
-
-        <div class="space-y-2">
-          <label class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">CONTRASEÑA</label>
-          <div class="relative group">
-            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline/60 group-focus-within:text-secondary transition-colors text-[20px]">lock</span>
-            <input class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 pl-12 pr-4 outline-none transition-all font-body placeholder:text-outline-variant/50" placeholder="••••••••" type="password">
-          </div>
-        </div>
-
-        <div class="space-y-2">
-          <label class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">CONFIRMAR CONTRASEÑA</label>
-          <div class="relative group">
-            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline/60 group-focus-within:text-secondary transition-colors text-[20px]">lock</span>
-            <input class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 pl-12 pr-4 outline-none transition-all font-body placeholder:text-outline-variant/50" placeholder="••••••••" type="password">
-          </div>
-        </div>
-
-        <button class="w-full bg-[#001c3a] text-white font-headline font-bold py-4 rounded-lg hover:opacity-95 active:scale-[0.98] transition-all shadow-lg mt-4" type="submit">
-          Registrarse
-        </button>
-
-        <div class="text-center pt-4">
-          <p class="text-on-surface-variant text-sm font-medium font-body">
-            ¿Ya tienes una cuenta? 
-            <a routerLink="/login" class="text-secondary font-bold hover:underline underline-offset-4 cursor-pointer">Ingresar ahora</a>
-          </p>
-        </div>
-      </form>
     </div>
-  </div>
 
-  <footer class="p-8 flex justify-center space-x-8 mt-auto">
-    <a class="text-[10px] font-label font-bold uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors" href="#">PRIVACY POLICY</a>
-    <a class="text-[10px] font-label font-bold uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors" href="#">TERMS OF SERVICE</a>
-  </footer>
-</section>
+    <footer class="p-8 flex justify-center space-x-8 mt-auto">
+      <a class="text-[10px] font-label font-bold uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors"
+        href="#">PRIVACY POLICY</a>
+      <a class="text-[10px] font-label font-bold uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors"
+        href="#">TERMS OF SERVICE</a>
+    </footer>
+  </section>
 </main>
