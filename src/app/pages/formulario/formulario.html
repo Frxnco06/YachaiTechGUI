@@ -34,10 +34,6 @@
       <h2 class="text-xl font-bold text-primary font-headline">Resumen Ejecutivo</h2>
       
       <div class="flex items-center space-x-4">
-        <button class="p-2 text-on-surface-variant hover:bg-surface rounded-full transition-colors relative">
-          <span class="material-symbols-outlined">notifications</span>
-          <span class="absolute top-1 right-2 w-2 h-2 bg-red-500 rounded-full"></span>
-        </button>
         <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center border border-secondary/20">
           <span class="material-symbols-outlined text-secondary">person</span>
         </div>
@@ -51,44 +47,12 @@
       <div class="bg-primary rounded-2xl p-8 text-white relative overflow-hidden shadow-md">
         <div class="absolute right-0 top-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
         <div class="relative z-10 w-full md:w-2/3">
-          <h3 class="text-3xl font-extrabold mb-2 font-headline">Bienvenido al Panel de Control</h3>
-          <p class="text-white/70 text-sm leading-relaxed mb-6 font-body">Aquí podrás gestionar la información ejecutiva, revisar análisis avanzados y administrar tus reportes de rendimiento dentro del sistema Yachay-Pro.</p>
+          <h3 class="text-3xl font-extrabold mb-2 font-headline">Panel de Control</h3>
+          <p class="text-white/70 text-sm leading-relaxed mb-6 font-body">Bienvenido al sistema Yachay-Pro. Utiliza el simulador para realizar tus análisis de gestión y toma de decisiones.</p>
           <button routerLink="/simulador/fase/1/lectura" class="bg-secondary text-white px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-secondary/90 transition-colors shadow-lg shadow-secondary/30">
             Iniciar Simulador
           </button>
         </div>
-      </div>
-
-      <!-- Stats Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- Stat Card 1 -->
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-outline-variant/20 hover:shadow-md transition-shadow">
-          <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
-             <span class="material-symbols-outlined">bar_chart</span>
-          </div>
-          <p class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">Total Analisis</p>
-          <h4 class="text-3xl font-extrabold text-primary font-headline">1,248</h4>
-        </div>
-
-        <!-- Stat Card 2 -->
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-outline-variant/20 hover:shadow-md transition-shadow">
-          <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
-             <span class="material-symbols-outlined">check_circle</span>
-          </div>
-          <p class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">Tareas Completadas</p>
-          <h4 class="text-3xl font-extrabold text-primary font-headline">892</h4>
-        </div>
-
-        <!-- Stat Card 3 -->
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-outline-variant/20 hover:shadow-md transition-shadow">
-          <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center mb-4">
-             <span class="material-symbols-outlined">trending_up</span>
-          </div>
-          <p class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">Crecimiento Mensual</p>
-          <h4 class="text-3xl font-extrabold text-primary font-headline">+14.5%</h4>
-        </div>
-
       </div>
 
     </div>
