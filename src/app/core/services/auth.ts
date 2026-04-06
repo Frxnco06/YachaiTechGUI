@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { LoginRequest, LoginResponse, RegistroRequest, RegistroResponse } from '../models/auth.interface';
+import { LoginRequest, LoginResponse, RegistroRequest, RegistroResponse, ForgotPasswordRequest, ResetPasswordRequest } from '../models/auth.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -23,5 +23,13 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('yachay_token');
+  }
+
+  forgotPassword(data: ForgotPasswordRequest): Observable<string> {
+    return this.http.post(`${this.URL}/forgot-password`, data, { responseType: 'text' });
+  }
+
+  resetPassword(data: ResetPasswordRequest): Observable<string> {
+    return this.http.post(`${this.URL}/reset-password`, data, { responseType: 'text' });
   }
 }
