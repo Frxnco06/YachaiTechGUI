@@ -20,7 +20,7 @@ export class FaseAlternativasComponent implements OnInit {
   numeroFase = 1;
   isLoading = true;
   isSubmitting = false;
-  alternativaSeleccionada: number | null = null;
+  alternativasSeleccionadas: Set<number> = new Set<number>();
   bloqueado = false;
 
   constructor(
@@ -75,32 +75,41 @@ export class FaseAlternativasComponent implements OnInit {
     });
   }
 
-  seleccionarAlternativa(alternativa: Alternativa): void {
+  toggleAlternativa(alternativa: Alternativa): void {
     if (this.bloqueado || this.isSubmitting || !this.sesion) return;
 
-    this.alternativaSeleccionada = alternativa.idAlternativa;
+    if (this.alternativasSeleccionadas.has(alternativa.idAlternativa)) {
+      this.alternativasSeleccionadas.delete(alternativa.idAlternativa);
+    } else {
+      this.alternativasSeleccionadas.add(alternativa.idAlternativa);
+    }
+    this.cdr.detectChanges();
+  }
+
+  enviarDecisiones(): void {
+    if (this.bloqueado || this.isSubmitting || !this.sesion || this.alternativasSeleccionadas.size === 0) return;
+
     this.isSubmitting = true;
 
     this.simuladorService.registrarDecision(this.sesion.idSesion, {
-      idAlternativa: alternativa.idAlternativa
+      idsAlternativas: Array.from(this.alternativasSeleccionadas)
     }).subscribe({
       next: (resultado) => {
-        console.log('✅ Decisión registrada:', resultado);
+        console.log('✅ Decisiones registradas:', resultado);
         this.resultado = resultado;
         this.bloqueado = true;
         this.isSubmitting = false;
-        this.sesion!.puntajeTotal = resultado.puntajeTotal;
         this.cdr.detectChanges();
       },
       error: (err) => {
-        console.error('❌ Error al registrar decisión:', err);
+        console.error('❌ Error al registrar decisiones:', err);
         this.isSubmitting = false;
-        this.alternativaSeleccionada = null;
+        this.alternativasSeleccionadas.clear();
         this.cdr.detectChanges();
 
         let msg = 'No se pudo registrar la decisión.';
         if (err.status === 409) {
-          msg = 'Ya has tomado una decisión para esta fase.';
+          msg = 'Ya has tomado decisiones para esta fase.';
           this.bloqueado = true;
           this.cdr.detectChanges();
         } else if (err.error?.message) {

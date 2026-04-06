@@ -17,16 +17,13 @@ export interface Sesion {
   idSesion: number;
   fchInicio: string;
   completado: boolean;
-  puntajeTotal: number;
 }
 
 export interface DecisionRequest {
-  idAlternativa: number;
+  idsAlternativas: number[];
 }
 
 export interface DecisionResponse {
   idPuntaje: number;
-  puntajeObtenido: number;
-  puntajeTotal: number;
   retroalimentacion: string;
 }
