@@ -5,7 +5,6 @@
 
 @layer base {
   :root {
-    /* Variables de fuente basadas en Google Fonts */
     --font-headline: 'Manrope', sans-serif;
     --font-body: 'Inter', sans-serif;
     
@@ -14,7 +13,6 @@
     --color-secondary: #006a6a;
   }
 
-  /* Aplicación global de fuentes */
   html {
     font-family: var(--font-body);
   }
@@ -25,7 +23,6 @@
 }
 
 @layer components {
-  /* Overlay oscuro para que el texto blanco resalte (como en la referencia) */
   .bg-overlay-deep {
     background: linear-gradient(
       135deg, 
@@ -34,7 +31,6 @@
     );
   }
 
-  /* Ajuste para iconos de Material Symbols */
   .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
     display: inline-block;
