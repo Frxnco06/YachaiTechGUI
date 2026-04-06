@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../../core/services/auth';
@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -63,6 +64,7 @@ export class LoginComponent implements OnInit {
       },
       error: (err: any) => {
         this.isSubmitting = false;
+        this.cdr.detectChanges();
         console.error('Error en el login:', err);
         this.notificationService.error('Error de autenticación', 'Correo o contraseña incorrectos. Intenta de nuevo.');
       }
