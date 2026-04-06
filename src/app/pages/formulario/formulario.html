@@ -7,19 +7,14 @@
     </div>
     
     <nav class="flex-grow py-6 px-4 space-y-2">
-      <a href="#" class="flex items-center space-x-3 px-4 py-3 bg-secondary/20 text-secondary border-r-4 border-secondary rounded-l-lg transition-colors">
+      <a routerLink="/formulario" class="flex items-center space-x-3 px-4 py-3 bg-secondary/20 text-secondary border-r-4 border-secondary rounded-l-lg transition-colors">
         <span class="material-symbols-outlined">dashboard</span>
         <span class="font-semibold text-sm uppercase tracking-wider">Dashboard</span>
       </a>
       
-      <a href="#" class="flex items-center space-x-3 px-4 py-3 text-white/70 hover:bg-white/5 hover:text-white rounded-lg transition-colors">
-        <span class="material-symbols-outlined">analytics</span>
-        <span class="font-semibold text-sm uppercase tracking-wider">Análisis</span>
-      </a>
-
-      <a href="#" class="flex items-center space-x-3 px-4 py-3 text-white/70 hover:bg-white/5 hover:text-white rounded-lg transition-colors">
-        <span class="material-symbols-outlined">description</span>
-        <span class="font-semibold text-sm uppercase tracking-wider">Reportes</span>
+      <a routerLink="/simulador/fase/1/lectura" class="flex items-center space-x-3 px-4 py-3 text-white/70 hover:bg-white/5 hover:text-white rounded-lg transition-colors">
+        <span class="material-symbols-outlined">science</span>
+        <span class="font-semibold text-sm uppercase tracking-wider">Simulador</span>
       </a>
     </nav>
 
@@ -58,8 +53,8 @@
         <div class="relative z-10 w-full md:w-2/3">
           <h3 class="text-3xl font-extrabold mb-2 font-headline">Bienvenido al Panel de Control</h3>
           <p class="text-white/70 text-sm leading-relaxed mb-6 font-body">Aquí podrás gestionar la información ejecutiva, revisar análisis avanzados y administrar tus reportes de rendimiento dentro del sistema Yachay-Pro.</p>
-          <button class="bg-secondary text-white px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-secondary/90 transition-colors shadow-lg shadow-secondary/30">
-            Generar Nuevo Reporte
+          <button routerLink="/simulador/fase/1/lectura" class="bg-secondary text-white px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-secondary/90 transition-colors shadow-lg shadow-secondary/30">
+            Iniciar Simulador
           </button>
         </div>
       </div>

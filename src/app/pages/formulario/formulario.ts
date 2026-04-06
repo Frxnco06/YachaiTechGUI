@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth';
 
 @Component({
   selector: 'app-formulario',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './formulario.html',
   styleUrl: './formulario.css',
 })
@@ -18,11 +18,7 @@ export class FormularioComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Basic session validation
-    const token = localStorage.getItem('yachay_token');
-    if (!token) {
-      this.router.navigate(['/login']);
-    }
+    // Auth guard handles session validation
   }
 
   logout(): void {

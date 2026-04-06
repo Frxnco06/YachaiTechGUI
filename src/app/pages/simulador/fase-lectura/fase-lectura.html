@@ -1,0 +1,101 @@
+<div class="flex h-screen bg-surface font-body overflow-hidden">
+  
+  <!-- Sidebar -->
+  <aside class="w-64 bg-primary-container text-white flex flex-col shadow-lg z-20">
+    <div class="h-20 flex items-center px-6 border-b border-white/10">
+      <h1 class="text-2xl font-extrabold tracking-tight text-white/90 font-headline">Yachay-Pro</h1>
+    </div>
+    
+    <nav class="flex-grow py-6 px-4 space-y-2">
+      <a routerLink="/formulario" class="flex items-center space-x-3 px-4 py-3 text-white/70 hover:bg-white/5 hover:text-white rounded-lg transition-colors">
+        <span class="material-symbols-outlined">dashboard</span>
+        <span class="font-semibold text-sm uppercase tracking-wider">Dashboard</span>
+      </a>
+      
+      <a class="flex items-center space-x-3 px-4 py-3 bg-secondary/20 text-secondary border-r-4 border-secondary rounded-l-lg transition-colors cursor-default">
+        <span class="material-symbols-outlined">science</span>
+        <span class="font-semibold text-sm uppercase tracking-wider">Simulador</span>
+      </a>
+    </nav>
+
+    <div class="p-4 border-t border-white/10">
+      <button (click)="logout()" class="w-full flex items-center justify-center space-x-2 px-4 py-3 text-white/80 hover:bg-red-500/20 hover:text-red-400 rounded-lg transition-colors">
+        <span class="material-symbols-outlined">logout</span>
+        <span class="font-semibold text-sm uppercase tracking-wider">Cerrar Sesión</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-grow flex flex-col relative overflow-y-auto bg-surface">
+    
+    <!-- Topbar -->
+    <header class="h-20 bg-white shadow-sm flex items-center justify-between px-8 z-10">
+      <div class="flex items-center space-x-3">
+        <span class="material-symbols-outlined text-secondary text-2xl">menu_book</span>
+        <h2 class="text-xl font-bold text-primary font-headline">Fase {{ numeroFase }} — Lectura</h2>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center border border-secondary/20">
+          <span class="material-symbols-outlined text-secondary">person</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="p-8 space-y-6 animate-fade-in">
+
+      <!-- Loading State -->
+      <div *ngIf="isLoading" class="flex items-center justify-center py-20">
+        <span class="material-symbols-outlined animate-spin text-4xl text-secondary">progress_activity</span>
+      </div>
+
+      <!-- Phase Content -->
+      <div *ngIf="!isLoading && fase" class="max-w-4xl mx-auto space-y-8">
+        
+        <!-- Phase Header -->
+        <div class="bg-primary rounded-2xl p-8 text-white relative overflow-hidden shadow-md">
+          <div class="absolute right-0 top-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
+          <div class="relative z-10">
+            <div class="flex items-center space-x-2 mb-3">
+              <span class="bg-secondary/30 text-secondary text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Fase {{ fase.numero }}</span>
+            </div>
+            <h3 class="text-3xl font-extrabold mb-2 font-headline">{{ fase.nombre }}</h3>
+            <p class="text-white/60 text-sm font-body">Lee atentamente el contexto del problema antes de tomar decisiones.</p>
+          </div>
+        </div>
+
+        <!-- Reading Card -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-outline-variant/20">
+          <div class="flex items-start space-x-4 mb-6">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined">description</span>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-primary font-headline mb-1">Contexto del Caso</h4>
+              <p class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">Lectura requerida antes de continuar</p>
+            </div>
+          </div>
+
+          <div class="prose prose-slate max-w-none">
+            <p *ngFor="let paragraph of fase.contenido.split('\n')" 
+               class="text-on-surface text-[15px] leading-relaxed mb-4 font-body">
+              {{ paragraph }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <div class="flex justify-end">
+          <button (click)="iniciarSimulacion()"
+            class="bg-secondary text-white px-8 py-4 rounded-xl font-bold text-sm hover:bg-secondary/90 active:scale-[0.98] transition-all shadow-lg shadow-secondary/30 flex items-center space-x-2 font-headline">
+            <span>Iniciar Simulación</span>
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
