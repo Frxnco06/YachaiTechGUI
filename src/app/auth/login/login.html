@@ -30,12 +30,12 @@
 
       <div class="w-full max-w-[440px] animate-fade-in">
         <div class="mb-10 text-left">
-          <h3 class="text-3xl font-bold text-primary mb-2 font-headline">Iniciar Sesión en Yachay-<p></p>Pro</h3>
+          <h3 class="text-3xl font-bold text-primary mb-2 font-headline">Iniciar Sesión en Yachay-Pro</h3>
           <p class="text-on-surface-variant text-sm font-body">Ingrese sus credenciales para acceder al panel ejecutivo.
           </p>
         </div>
 
-        <form class="space-y-6" (ngSubmit)="iniciarSesion()">
+        <form class="space-y-6" [formGroup]="loginForm" (ngSubmit)="iniciarSesion()">
           <div class="space-y-2">
             <label
               class="block text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant font-body">CORREO
@@ -43,10 +43,12 @@
             <div class="relative group">
               <span
                 class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline/60 group-focus-within:text-secondary transition-colors">mail</span>
-              <input name="correo" [(ngModel)]="credentials.correo"
+              <input formControlName="correo"
                 class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-4 pl-12 pr-4 text-on-surface transition-all outline-none font-body"
-                placeholder="nombre@yachaytech.edu.ec" type="email" required />
+                [ngClass]="{'border-red-400 focus:border-red-500 focus:ring-red-500': errors['correo']}"
+                placeholder="nombre@yachaytech.edu.ec" type="email" />
             </div>
+            <p *ngIf="errors['correo']" class="text-xs text-red-500 font-body mt-1">{{ errors['correo'] }}</p>
           </div>
 
           <div class="space-y-2">
@@ -59,17 +61,30 @@
             <div class="relative group">
               <span
                 class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline/60 group-focus-within:text-secondary transition-colors">lock</span>
-              <input name="contrasena" [(ngModel)]="credentials.contrasena"
+              <input formControlName="contrasena"
                 class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-4 pl-12 pr-4 text-on-surface transition-all outline-none font-body"
-                placeholder="••••••••" type="password" required />
+                [ngClass]="{'border-red-400 focus:border-red-500 focus:ring-red-500': errors['contrasena']}"
+                placeholder="••••••••" type="password" />
             </div>
+            <p *ngIf="errors['contrasena']" class="text-xs text-red-500 font-body mt-1">{{ errors['contrasena'] }}</p>
           </div>
 
-          <button
-            class="w-full bg-[#001c3a] text-white font-bold py-4 rounded-lg hover:opacity-95 active:scale-[0.98] transition-all mt-8 shadow-md font-headline"
+          <button [disabled]="isSubmitting"
+            class="w-full bg-[#001c3a] text-white font-bold py-4 rounded-lg hover:opacity-95 active:scale-[0.98] transition-all mt-8 shadow-md font-headline disabled:opacity-70 disabled:cursor-not-allowed"
             type="submit">
-            Entrar al Sistema
+            <span *ngIf="!isSubmitting">Entrar al Sistema</span>
+            <span *ngIf="isSubmitting" class="flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined animate-spin">progress_activity</span>
+              Procesando...
+            </span>
           </button>
+
+          <div class="text-center mt-6">
+            <p class="text-sm text-on-surface-variant font-body">
+              ¿Aún no tienes una cuenta? 
+              <a routerLink="/register" class="font-bold text-secondary hover:opacity-80 transition-opacity">Regístrate aquí</a>
+            </p>
+          </div>
 
         </form>
       </div>
