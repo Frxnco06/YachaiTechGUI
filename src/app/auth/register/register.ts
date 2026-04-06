@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
         );
         setTimeout(() => {
           this.router.navigate(['/login']);
-        }, 4000);
+        }, 1500);
       },
       error: (err: any) => {
         this.isSubmitting = false;
