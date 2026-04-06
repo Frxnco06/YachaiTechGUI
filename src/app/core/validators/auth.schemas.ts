@@ -12,9 +12,13 @@ export const RegisterSchema = z.object({
   contrasena: z.string()
     .min(1, 'La contraseña es obligatoria')
     .min(8, 'La contraseña debe tener al menos 8 caracteres'),
+  confirmarContrasena: z.string().min(1, 'Confirmar contraseña es obligatorio'),
   nombres: z.string().min(1, 'El nombre es obligatorio'),
   apepa: z.string().min(1, 'El apellido paterno es obligatorio'),
   apema: z.string().min(1, 'El apellido materno es obligatorio')
+}).refine((data) => data.contrasena === data.confirmarContrasena, {
+  message: "Las contraseñas no coinciden",
+  path: ["confirmarContrasena"],
 });
 
 export type RegisterData = z.infer<typeof RegisterSchema>;
