@@ -23,6 +23,7 @@ export class FaseAlternativasComponent implements OnInit {
   alternativasSeleccionadas: Set<number> = new Set<number>();
   bloqueado = false;
 
+
   constructor(
     private simuladorService: SimuladorService,
     private authService: AuthService,
@@ -30,47 +31,42 @@ export class FaseAlternativasComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.numeroFase = +params['numero'];
+      this.numeroFase = +params['numero'] || 1;
       this.inicializar();
     });
   }
 
   private inicializar(): void {
     this.isLoading = true;
-
-    // First, ensure we have an active session
     this.simuladorService.crearSesion().subscribe({
       next: (sesion) => {
-        console.log('✅ Sesión iniciada:', sesion);
         this.sesion = sesion;
         this.cargarAlternativas();
       },
       error: (err) => {
-        console.error('❌ Error al iniciar sesión:', err);
         this.isLoading = false;
+        this.notificationService.error('Error', 'No se pudo iniciar la sesión.');
         this.cdr.detectChanges();
-        this.notificationService.error('Error', 'No se pudo iniciar la sesión del simulador.');
       }
     });
   }
 
   private cargarAlternativas(): void {
+    this.isLoading = true;
     this.simuladorService.obtenerAlternativas(this.numeroFase).subscribe({
       next: (alternativas) => {
-        console.log('✅ Alternativas cargadas:', alternativas);
         this.alternativas = alternativas;
         this.isLoading = false;
         this.cdr.detectChanges();
       },
       error: (err) => {
-        console.error('❌ Error al cargar alternativas:', err);
         this.isLoading = false;
-        this.cdr.detectChanges();
         this.notificationService.error('Error', 'No se pudieron cargar las alternativas.');
+        this.cdr.detectChanges();
       }
     });
   }
@@ -85,7 +81,16 @@ export class FaseAlternativasComponent implements OnInit {
     }
     this.cdr.detectChanges();
   }
+  toggleAlternativaStatic(id: number): void {
+    if (this.bloqueado || this.isSubmitting) return;
 
+    if (this.alternativasSeleccionadas.has(id)) {
+      this.alternativasSeleccionadas.delete(id);
+    } else {
+      this.alternativasSeleccionadas.add(id);
+    }
+    this.cdr.detectChanges();
+  }
   enviarDecisiones(): void {
     if (this.bloqueado || this.isSubmitting || !this.sesion || this.alternativasSeleccionadas.size === 0) return;
 
@@ -95,29 +100,40 @@ export class FaseAlternativasComponent implements OnInit {
       idsAlternativas: Array.from(this.alternativasSeleccionadas)
     }).subscribe({
       next: (resultado) => {
-        console.log('✅ Decisiones registradas:', resultado);
         this.resultado = resultado;
         this.bloqueado = true;
         this.isSubmitting = false;
+
+        this.notificationService.success('¡Decisión Registrada!', 'Revisa el feedback del consultor antes de continuar.');
         this.cdr.detectChanges();
       },
       error: (err) => {
-        console.error('❌ Error al registrar decisiones:', err);
         this.isSubmitting = false;
-        this.alternativasSeleccionadas.clear();
-        this.cdr.detectChanges();
-
         let msg = 'No se pudo registrar la decisión.';
+
         if (err.status === 409) {
           msg = 'Ya has tomado decisiones para esta fase.';
           this.bloqueado = true;
-          this.cdr.detectChanges();
-        } else if (err.error?.message) {
-          msg = err.error.message;
         }
+
         this.notificationService.error('Error', msg);
+        this.cdr.detectChanges();
       }
     });
+  }
+
+  irASiguienteFase(): void {
+    this.numeroFase++;
+
+    this.alternativasSeleccionadas.clear();
+    this.resultado = null;
+    this.bloqueado = false;
+
+    this.cargarAlternativas();
+
+    this.router.navigate(['/simulador/fase', this.numeroFase, 'seleccion'], { replaceUrl: true });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   logout(): void {

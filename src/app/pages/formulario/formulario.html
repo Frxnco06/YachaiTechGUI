@@ -1,57 +1,88 @@
-<div class="flex h-screen bg-surface font-body overflow-hidden">
+<div class="flex h-screen bg-slate-50 font-sans overflow-hidden">
   
-  <!-- Sidebar -->
-  <aside class="w-64 bg-primary-container text-white flex flex-col shadow-lg z-20">
-    <div class="h-20 flex items-center px-6 border-b border-white/10">
-      <h1 class="text-2xl font-extrabold tracking-tight text-white/90 font-headline">Yachay-Pro</h1>
+  <aside class="hidden md:flex w-72 bg-slate-900 text-white flex-col shadow-2xl z-30">
+    <div class="h-20 flex items-center px-8 border-b border-white/5">
+      <h1 class="text-2xl font-black tracking-tighter text-indigo-400 font-headline italic">Yachay-Pro</h1>
     </div>
     
-    <nav class="flex-grow py-6 px-4 space-y-2">
-      <a routerLink="/formulario" class="flex items-center space-x-3 px-4 py-3 bg-secondary/20 text-secondary border-r-4 border-secondary rounded-l-lg transition-colors">
+    <nav class="flex-grow py-8 px-4 space-y-3">
+      <a routerLink="/formulario" class="flex items-center space-x-3 px-4 py-3 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-xl transition-all cursor-default group">
         <span class="material-symbols-outlined">dashboard</span>
-        <span class="font-semibold text-sm uppercase tracking-wider">Dashboard</span>
+        <span class="font-bold text-xs uppercase tracking-widest">Dashboard</span>
       </a>
       
-      <a routerLink="/simulador/fase/1/lectura" class="flex items-center space-x-3 px-4 py-3 text-white/70 hover:bg-white/5 hover:text-white rounded-lg transition-colors">
-        <span class="material-symbols-outlined">science</span>
-        <span class="font-semibold text-sm uppercase tracking-wider">Simulador</span>
+      <a routerLink="/simulador/fase/1/lectura" class="flex items-center space-x-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-white rounded-xl transition-all duration-200 group">
+        <span class="material-symbols-outlined group-hover:scale-110 transition-transform">science</span>
+        <span class="font-bold text-xs uppercase tracking-widest">Simulador</span>
       </a>
     </nav>
 
-    <div class="p-4 border-t border-white/10">
-      <button (click)="logout()" class="w-full flex items-center justify-center space-x-2 px-4 py-3 text-white/80 hover:bg-red-500/20 hover:text-red-400 rounded-lg transition-colors">
-        <span class="material-symbols-outlined">logout</span>
-        <span class="font-semibold text-sm uppercase tracking-wider">Cerrar Sesión</span>
+    <div class="p-6 border-t border-white/5">
+      <button (click)="logout()" class="w-full flex items-center justify-center space-x-2 px-4 py-3 text-slate-500 hover:bg-red-500/10 hover:text-red-400 rounded-xl transition-colors">
+        <span class="material-symbols-outlined text-xl">logout</span>
+        <span class="font-bold text-xs uppercase tracking-widest">Cerrar Sesión</span>
       </button>
     </div>
   </aside>
 
-  <!-- Main Content -->
-  <main class="flex-grow flex flex-col relative overflow-y-auto bg-surface">
+  <main class="flex-grow flex flex-col relative overflow-y-auto">
     
-    <!-- Topbar -->
-    <header class="h-20 bg-white shadow-sm flex items-center justify-between px-8 z-10">
-      <h2 class="text-xl font-bold text-primary font-headline">Resumen Ejecutivo</h2>
+    <header class="h-20 bg-white/70 backdrop-blur-md sticky top-0 border-b border-slate-200 flex items-center justify-between px-6 md:px-12 z-20">
+      <h2 class="text-lg md:text-xl font-extrabold text-slate-800 font-headline uppercase tracking-tight">
+        Resumen <span class="text-indigo-600">Ejecutivo</span>
+      </h2>
       
       <div class="flex items-center space-x-4">
-        <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center border border-secondary/20">
-          <span class="material-symbols-outlined text-secondary">person</span>
+        <div class="text-right hidden sm:block">
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">Analista</p>
+            <p class="text-sm font-bold text-slate-700">Franco</p>
+        </div>
+        <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center border border-slate-200 shadow-sm">
+          <span class="material-symbols-outlined text-slate-600">person</span>
         </div>
       </div>
     </header>
 
-    <!-- Dashboard Content -->
-    <div class="p-8 space-y-6">
+    <div class="p-6 md:p-12 max-w-6xl mx-auto w-full animate-fade-in space-y-10">
       
-      <!-- Welcome Card -->
-      <div class="bg-primary rounded-2xl p-8 text-white relative overflow-hidden shadow-md">
-        <div class="absolute right-0 top-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
-        <div class="relative z-10 w-full md:w-2/3">
-          <h3 class="text-3xl font-extrabold mb-2 font-headline">Panel de Control</h3>
-          <p class="text-white/70 text-sm leading-relaxed mb-6 font-body">Bienvenido al sistema Yachay-Pro. Utiliza el simulador para realizar tus análisis de gestión y toma de decisiones.</p>
-          <button routerLink="/simulador/fase/1/lectura" class="bg-secondary text-white px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-secondary/90 transition-colors shadow-lg shadow-secondary/30">
-            Iniciar Simulador
+      <div class="bg-slate-800 rounded-[2.5rem] p-8 md:p-14 text-white relative overflow-hidden shadow-2xl shadow-slate-300">
+        <div class="absolute -right-20 -top-20 w-96 h-96 bg-indigo-500/10 rounded-full blur-[100px]"></div>
+        <div class="absolute right-10 bottom-10 w-40 h-40 bg-indigo-600/5 rounded-full blur-[50px]"></div>
+        
+        <div class="relative z-10 w-full lg:w-3/4">
+          <span class="inline-block bg-indigo-500/20 text-indigo-300 text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-lg border border-indigo-500/30 mb-6">
+            Panel de Control
+          </span>
+          <h3 class="text-4xl md:text-5xl font-black mb-4 font-headline leading-tight tracking-tighter italic">
+            Bienvenido, Franco
+          </h3>
+          <p class="text-slate-400 text-base md:text-lg leading-relaxed mb-10 max-w-xl">
+            Gestiona tus avances en el sistema Yachay-Pro. Utiliza el simulador para realizar tus análisis de gestión y toma de decisiones estratégicas.
+          </p>
+          
+          <button routerLink="/simulador/fase/1/lectura" 
+            class="group bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-[0.15em] transition-all duration-300 shadow-xl shadow-indigo-900/40 hover:-translate-y-1 flex items-center space-x-3">
+            <span>Iniciar Simulador</span>
+            <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">rocket_launch</span>
           </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <span class="material-symbols-outlined text-indigo-600 mb-4 text-3xl">trending_up</span>
+            <h4 class="font-bold text-slate-800 uppercase text-xs tracking-widest mb-2">Progreso Actual</h4>
+            <p class="text-2xl font-black text-slate-900 tracking-tighter">Fase 01</p>
+        </div>
+        <div class="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm">
+            <span class="material-symbols-outlined text-slate-400 mb-4 text-3xl">history</span>
+            <h4 class="font-bold text-slate-400 uppercase text-xs tracking-widest mb-2">Última Sesión</h4>
+            <p class="text-2xl font-black text-slate-400 tracking-tighter">-- / --</p>
+        </div>
+        <div class="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm">
+            <span class="material-symbols-outlined text-slate-400 mb-4 text-3xl">analytics</span>
+            <h4 class="font-bold text-slate-400 uppercase text-xs tracking-widest mb-2">Puntaje Acumulado</h4>
+            <p class="text-2xl font-black text-slate-400 tracking-tighter">0 pts</p>
         </div>
       </div>
 
