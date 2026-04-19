@@ -13,6 +13,7 @@ export interface Alternativa {
   retroalimentacion: string;
   orden: number;
   faseSiguienteId: number | null;
+  grupo: string | null;
 }
 
 export interface Sesion {

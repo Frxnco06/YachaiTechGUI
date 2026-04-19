@@ -15,7 +15,7 @@ import { Fase } from '../../../core/models/simulador.interface';
 })
 export class FaseLecturaComponent implements OnInit {
   fase: Fase | null = null;
-  idFase = 1;
+  idFase: number = 1;
   isLoading = true;
 
   constructor(

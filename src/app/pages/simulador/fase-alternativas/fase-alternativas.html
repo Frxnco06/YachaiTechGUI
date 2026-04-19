@@ -1,260 +1,313 @@
 <div class="flex h-screen bg-slate-50 font-sans overflow-hidden">
 
-  <aside class="hidden md:flex w-72 bg-slate-900 text-white flex-col shadow-2xl z-30">
-    <div class="h-20 flex items-center px-8 border-b border-white/5">
-      <h1 class="text-2xl font-black tracking-tighter text-indigo-400 font-headline italic">Yachay-Pro</h1>
+  <!-- Sidebar -->
+  <aside class="hidden md:flex w-64 bg-slate-900 text-white flex-col shadow-xl z-30">
+    <div class="h-16 flex items-center px-6 border-b border-white/5">
+      <div class="w-6 h-6 bg-indigo-500 rounded-md mr-3 flex items-center justify-center">
+        <span class="material-symbols-outlined text-white text-base">science</span>
+      </div>
+      <h1 class="text-lg font-bold tracking-tight text-white font-headline">Yachay<span class="text-indigo-400">Pro</span></h1>
     </div>
-    <nav class="flex-grow py-8 px-4 space-y-3">
-      <a routerLink="/formulario"
-        class="flex items-center space-x-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-white rounded-xl transition-all">
-        <span class="material-symbols-outlined">dashboard</span>
-        <span class="font-bold text-xs uppercase tracking-widest">Dashboard</span>
+    <nav class="flex-grow py-6 px-3 space-y-1">
+      <a routerLink="/formulario" class="flex items-center space-x-3 px-3 py-2 text-slate-400 hover:bg-white/5 hover:text-white rounded-lg transition-all group">
+        <span class="material-symbols-outlined text-xl group-hover:text-indigo-400 transition-colors">dashboard</span>
+        <span class="font-semibold text-xs uppercase tracking-wider">Dashboard</span>
       </a>
-      <a
-        class="flex items-center space-x-3 px-4 py-3 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-xl cursor-default">
-        <span class="material-symbols-outlined">science</span>
-        <span class="font-bold text-xs uppercase tracking-widest">Simulador</span>
-      </a>
+      <div class="flex items-center space-x-3 px-3 py-2 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-lg">
+        <span class="material-symbols-outlined text-xl">analytics</span>
+        <span class="font-semibold text-xs uppercase tracking-wider">Simulación</span>
+      </div>
     </nav>
-    <div class="p-6 border-t border-white/5">
-      <button (click)="logout()"
-        class="w-full flex items-center justify-center space-x-2 px-4 py-3 text-slate-500 hover:text-red-400 transition-colors">
-        <span class="material-symbols-outlined">logout</span>
-        <span class="font-bold text-xs uppercase tracking-widest">Cerrar Sesión</span>
+    <div class="p-5 border-t border-white/5">
+      <div class="mb-4">
+        <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-2">Progreso</p>
+        <div class="h-1 w-full bg-slate-800 rounded-full overflow-hidden">
+          <div class="h-full bg-indigo-500 transition-all duration-700" [style.width.%]="progresoFase"></div>
+        </div>
+      </div>
+      <button (click)="logout()" class="w-full flex items-center justify-center space-x-2 py-2 text-slate-500 hover:text-red-400 transition-colors rounded-lg hover:bg-red-500/5">
+        <span class="material-symbols-outlined text-sm">logout</span>
+        <span class="font-bold text-[9px] uppercase tracking-widest">Cerrar Sesión</span>
       </button>
     </div>
   </aside>
 
+  <!-- Main Content -->
   <main class="flex-grow flex flex-col relative overflow-y-auto">
 
-    <header
-      class="h-20 bg-white/70 backdrop-blur-md sticky top-0 border-b border-slate-200 flex items-center justify-between px-6 md:px-12 z-20">
+    <!-- Sticky Header -->
+    <header class="h-16 bg-white sticky top-0 border-b border-slate-200 flex items-center justify-between px-6 md:px-10 z-20">
       <div class="flex items-center space-x-3">
-        <span class="material-symbols-outlined text-indigo-600 text-2xl font-bold">quiz</span>
-        <h2 class="text-lg md:text-xl font-extrabold text-slate-800 font-headline uppercase tracking-tight">
-          Fase {{ idFase }} <span class="text-slate-300 mx-2">—</span> Selección
-        </h2>
+        <div class="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center text-xs font-bold">
+          {{ idFase }}
+        </div>
+        <div>
+          <h2 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Entorno de Simulación</h2>
+          <p class="text-base font-bold text-slate-900 leading-none">
+            <ng-container [ngSwitch]="idFase">
+              <span *ngSwitchCase="1">Análisis de Stopper de Ventas</span>
+              <span *ngSwitchCase="2">Identificación de Perfiles Buyer Persona</span>
+              <span *ngSwitchDefault>Determinación del Posicionamiento</span>
+            </ng-container>
+          </p>
+        </div>
       </div>
-      <a [routerLink]="['/simulador/fase', idFase, 'lectura']"
-        class="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-indigo-600 transition-colors bg-slate-100 px-4 py-2 rounded-lg flex items-center space-x-1 font-body">
-        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-        <span>Volver a la lectura</span>
-      </a>
+
+      <div class="flex items-center space-x-2">
+        <!-- Progress dots -->
+        <div class="hidden sm:flex flex-col items-end mr-4">
+          <div *ngIf="idFase === 1" class="flex space-x-1">
+            <div *ngFor="let g of ['A','B','C']" class="w-1.5 h-1.5 rounded-full transition-all duration-300"
+                 [ngClass]="completedGroups.has(g) ? 'bg-emerald-500 shadow-sm' : 'bg-slate-200'"></div>
+          </div>
+          <div *ngIf="idFase === 2" class="flex space-x-1">
+            <div *ngFor="let g of ['Hijo','Padre']" class="w-1.5 h-1.5 rounded-full transition-all duration-300"
+                 [ngClass]="completedGroups.has(g) ? 'bg-emerald-500 shadow-sm' : 'bg-slate-200'"></div>
+          </div>
+          <div *ngIf="idFase === 3" class="flex space-x-1">
+            <div *ngFor="let g of ['Axis_PC','Axis_ID','Axis_PE']" class="w-1.5 h-1.5 rounded-full transition-all duration-300"
+                 [ngClass]="completedGroups.has(g) ? 'bg-emerald-500 shadow-sm' : 'bg-slate-200'"></div>
+          </div>
+        </div>
+        <a [routerLink]="['/simulador/fase', idFase, 'lectura']" class="p-2 text-slate-400 hover:text-indigo-600 rounded-md transition-all" title="Ver descripción">
+          <span class="material-symbols-outlined text-xl">import_contacts</span>
+        </a>
+      </div>
     </header>
 
-    <div class="p-6 md:p-10 max-w-5xl mx-auto w-full animate-fade-in">
+    <!-- Page Content -->
+    <div class="p-6 md:p-10 max-w-5xl mx-auto w-full">
 
+      <!-- Loading State -->
       <div *ngIf="isLoading" class="flex flex-col items-center justify-center py-24">
-        <span class="material-symbols-outlined animate-spin text-5xl text-indigo-500">progress_activity</span>
+        <span class="material-symbols-outlined animate-spin text-4xl text-indigo-500 mb-3">progress_activity</span>
+        <p class="text-slate-400 font-bold uppercase tracking-widest text-[9px]">Inicializando...</p>
       </div>
 
-      <div *ngIf="!isLoading" class="space-y-8">
+      <div *ngIf="!isLoading" class="space-y-6 animate-fade-in">
 
-        <div class="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-sm border border-slate-100">
-          <div class="flex items-center space-x-3 mb-6">
-            <span
-              class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest">
-              Misión Actual - Fase {{ numeroFase }}
+        <!-- ─── COLLAPSIBLE PHASE 1 SUMMARY (Phase 2 only) ────────────────── -->
+        <div *ngIf="idFase === 2" class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+          <button (click)="summaryExpanded = !summaryExpanded"
+                  class="w-full flex items-center justify-between p-5 bg-slate-50/50 hover:bg-slate-50 transition-colors">
+            <div class="flex items-center space-x-3">
+              <span class="material-symbols-outlined text-indigo-500">assignment</span>
+              <span class="text-xs font-bold uppercase tracking-widest text-slate-700">Resumen de Investigación (Fase 1)</span>
+            </div>
+            <span class="material-symbols-outlined transition-transform duration-300"
+                  [style.transform]="summaryExpanded ? 'rotate(180deg)' : 'rotate(0)'">expand_more</span>
+          </button>
+          <div *ngIf="summaryExpanded" class="p-6 border-t border-slate-100 bg-white animate-fade-in">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="space-y-2">
+                <h5 class="text-[9px] font-black uppercase tracking-widest text-indigo-400 flex items-center">
+                  <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 mr-2"></span>Análisis Estímulos
+                </h5>
+                <p class="text-xs text-slate-600 leading-relaxed">Falla sensorial en la web: las fotos no muestran fluidez. El contacto físico rompe la creencia de baja calidad.</p>
+              </div>
+              <div class="space-y-2">
+                <h5 class="text-[9px] font-black uppercase tracking-widest text-purple-400 flex items-center">
+                  <span class="w-1.5 h-1.5 rounded-full bg-purple-400 mr-2"></span>Toma de Decisiones
+                </h5>
+                <p class="text-xs text-slate-600 leading-relaxed">El hijo impulsa el deseo mediante "Yachay-Hub", pero el padre duda al momento de pagar por falta de confianza.</p>
+              </div>
+              <div class="space-y-2">
+                <h5 class="text-[9px] font-black uppercase tracking-widest text-orange-400 flex items-center">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-400 mr-2"></span>Actitudes y Creencias
+                </h5>
+                <p class="text-xs text-slate-600 leading-relaxed">Existe un prejuicio cognitivo: "lo peruano es básico". Se requiere garantía física cerca de casa para el padre.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── PHASE CONTEXT BANNER ───────────────────────────────────────── -->
+        <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+          <ng-container [ngSwitch]="idFase">
+            <ng-container *ngSwitchCase="1">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-red-50 text-red-600 text-[9px] font-bold uppercase tracking-widest mb-4 block">Alerta</span>
+              <h3 class="text-2xl font-bold text-slate-900 mb-3 font-headline">Yachay-Tech: <span class="text-indigo-600">Crisis en Tablet "Kallpa"</span></h3>
+              <p class="text-slate-600 leading-relaxed text-base max-w-2xl">Identifica por qué el cliente abandona el carrito de compras mediante instrumentos de investigación estratégica.</p>
+            </ng-container>
+            <ng-container *ngSwitchCase="2">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 text-[9px] font-bold uppercase tracking-widest mb-4 block">Perfilado</span>
+              <h3 class="text-2xl font-bold text-slate-900 mb-3 font-headline">Definición del <span class="text-indigo-600">Buyer Persona</span></h3>
+              <p class="text-slate-600 leading-relaxed text-base max-w-2xl">Utiliza los resultados de la investigación para definir los perfiles del Buyer Persona (Hijo y Padre).</p>
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+              <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-600 text-[9px] font-bold uppercase tracking-widest mb-4 block">Estrategia</span>
+              <h3 class="text-2xl font-bold text-slate-900 mb-3 font-headline">Determinación del <span class="text-indigo-600">Posicionamiento</span></h3>
+              <p class="text-slate-600 leading-relaxed text-base max-w-2xl">Define la estrategia de posicionamiento competitiva para la Tablet "Kallpa" en los tres ejes fundamentales.</p>
+            </ng-container>
+          </ng-container>
+        </div>
+
+        <!-- ─── HUB VIEW (Phase 1 & Phase 3) ─────────────────────────────── -->
+        <ng-container *ngIf="isHubPhase && currentGroup === null && !feedbackActual">
+          <div class="space-y-6">
+            <div class="flex items-end justify-between border-b border-slate-100 pb-4">
+              <div>
+                <h4 class="text-lg font-bold text-slate-900">
+                  {{ idFase === 1 ? 'Rutas de Investigación' : 'Ejes Estratégicos' }}
+                </h4>
+                <p class="text-xs text-slate-500">
+                  {{ idFase === 1 ? 'Selecciona una dimensión para analizar la causa raíz.' : 'Selecciona un eje para definir la estrategia de posicionamiento.' }}
+                </p>
+              </div>
+              <button *ngIf="completedGroups.size === 3" (click)="navegarSiguienteFase()"
+                      class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-indigo-700 transition-all flex items-center space-x-2">
+                <span>{{ idFase === 1 ? 'Finalizar Investigación' : 'Finalizar Posicionamiento' }}</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              </button>
+            </div>
+
+            <div *ngIf="hubGroups.length > 0; else noContent" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div *ngFor="let g of hubGroups"
+                   (click)="seleccionarGrupo(g.id)"
+                   class="p-8 rounded-xl border-2 transition-all cursor-pointer hover:shadow-lg active:scale-95"
+                   [ngClass]="completedGroups.has(g.id)
+                     ? 'border-emerald-100 bg-emerald-50/20 cursor-default'
+                     : 'border-slate-100 bg-white hover:border-indigo-200'">
+                <div class="flex justify-between items-start mb-4">
+                  <span class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-lg">{{ idFase === 1 ? 'search' : 'insights' }}</span>
+                  </span>
+                  <span *ngIf="completedGroups.has(g.id)" class="text-[9px] font-bold text-emerald-600 bg-emerald-100 px-2 py-1 rounded">COMPLETADO</span>
+                </div>
+                <h5 class="text-base font-bold text-slate-900 mb-1">{{ g.title }}</h5>
+                <p class="text-xs text-slate-500 leading-relaxed">{{ g.description }}</p>
+              </div>
+            </div>
+
+            <!-- Empty state if DB not loaded -->
+            <ng-template #noContent>
+              <div class="flex flex-col items-center justify-center py-20 px-6 text-center animate-fade-in">
+                <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-4">
+                  <span class="material-symbols-outlined text-2xl text-slate-300">database_alert</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Contenido no disponible</h3>
+                <p class="text-sm text-slate-500 max-w-xs mx-auto">
+                  No se pudieron cargar las opciones para la fase {{ idFase }}. Verifica que las migraciones de base de datos se hayan aplicado correctamente.
+                </p>
+                <button (click)="inicializar()" class="mt-6 px-5 py-2.5 bg-slate-900 text-white text-[10px] font-bold uppercase tracking-widest rounded-lg hover:bg-slate-800 transition-colors">
+                  Reintentar Carga
+                </button>
+              </div>
+            </ng-template>
+          </div>
+        </ng-container>
+
+        <!-- ─── SELECTION VIEW (within a group) ────────────────────────────── -->
+        <div *ngIf="currentGroup && !feedbackActual" class="space-y-6 animate-fade-in">
+          <div class="flex items-center justify-between">
+            <button (click)="currentGroup = null" class="flex items-center space-x-2 text-slate-400 hover:text-slate-900 transition-colors">
+              <span class="material-symbols-outlined text-base">arrow_back</span>
+              <span class="text-[10px] font-bold uppercase tracking-widest">Volver</span>
+            </button>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">
+              <ng-container [ngSwitch]="idFase">
+                <span *ngSwitchCase="1">Análisis: {{ currentGroup }}</span>
+                <span *ngSwitchCase="2">Perfil Buyer Persona: {{ currentGroup }}</span>
+                <span *ngSwitchDefault>Eje de Posicionamiento: {{ currentGroup }}</span>
+              </ng-container>
             </span>
           </div>
 
-          <div *ngIf="numeroFase === 1">
-            <h3 class="text-2xl font-black text-slate-800 mb-4 font-headline uppercase italic tracking-tight">
-              Investigación y Diagnóstico</h3>
-            <p class="text-slate-600 leading-relaxed text-lg border-l-4 border-slate-200 pl-6">
-              Se ha detectado una anomalía en los patrones de cancelación de usuarios. Como analista, debes identificar
-              el origen del problema.
+          <div class="bg-indigo-900 text-white p-8 rounded-xl shadow-lg relative overflow-hidden">
+            <div class="absolute right-0 bottom-0 opacity-10 p-5 transform translate-y-4">
+              <span class="material-symbols-outlined text-8xl">{{ idFase === 2 ? 'face' : 'tactic' }}</span>
+            </div>
+            <h4 class="text-lg font-bold font-headline mb-3">
+              <ng-container [ngSwitch]="idFase">
+                <span *ngSwitchCase="1">Instrumento de Análisis {{ currentGroup }}</span>
+                <span *ngSwitchCase="2">Definir Perfil: {{ currentGroup }}</span>
+                <span *ngSwitchDefault>Estrategia de Posicionamiento</span>
+              </ng-container>
+            </h4>
+            <p class="text-indigo-100 text-sm leading-relaxed opacity-90">
+              <span *ngIf="currentGroup === 'Hijo'">Son jóvenes estudiantes (17-25 años). Elige el perfil que mejor los representa.</span>
+              <span *ngIf="currentGroup === 'Padre'">Son adultos decisores (Generación X). Elige el perfil que mejor los representa.</span>
+              <span *ngIf="idFase === 1">Selecciona el instrumento idóneo para profundizar en el Análisis {{ currentGroup }}.</span>
+              <span *ngIf="idFase === 3">Propón la estrategia que garantice el posicionamiento de la Tablet "Kallpa" en este eje.</span>
             </p>
           </div>
 
-          <div *ngIf="numeroFase === 2">
-            <h3 class="text-2xl font-black text-slate-800 mb-4 font-headline uppercase italic tracking-tight">Gestión de
-              Crisis de Datos</h3>
-            <p class="text-slate-600 leading-relaxed text-lg border-l-4 border-slate-200 pl-6">
-              La brecha de seguridad ha escalado. Se ha confirmado que el acceso no autorizado comprometió la base de
-              datos de clientes corporativos. Debes seleccionar las medidas de contención inmediata.
-            </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <button *ngFor="let alt of alternativasFiltradas" (click)="toggleAlternativa(alt)" [disabled]="isSubmitting"
+                    class="p-5 text-left bg-white border-2 rounded-xl transition-all active:scale-[0.98]"
+                    [ngClass]="alternativasSeleccionadas.has(alt.idAlternativa)
+                      ? 'border-indigo-600 bg-indigo-50/30'
+                      : 'border-slate-200 hover:border-indigo-300 hover:bg-indigo-50/10'">
+              <span *ngIf="alternativasSeleccionadas.has(alt.idAlternativa)" class="material-symbols-outlined text-indigo-600 text-base mb-2 block">check_circle</span>
+              <h5 class="font-bold text-xs leading-snug"
+                  [ngClass]="alternativasSeleccionadas.has(alt.idAlternativa) ? 'text-indigo-900' : 'text-slate-700'">{{ alt.descAlternativa }}</h5>
+            </button>
+          </div>
+
+          <div *ngIf="alternativasSeleccionadas.size > 0" class="flex justify-end pt-4">
+            <button (click)="enviarDecisiones()" [disabled]="isSubmitting"
+                    class="bg-slate-900 text-white px-8 py-3.5 rounded-lg font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-slate-800 transition-all flex items-center space-x-2">
+              <span class="material-symbols-outlined text-sm" [ngClass]="{'animate-spin': isSubmitting}">{{ isSubmitting ? 'progress_activity' : 'verified' }}</span>
+              <span>Confirmar Selección</span>
+            </button>
           </div>
         </div>
 
-        <div class="bg-indigo-50 border border-indigo-100 rounded-3xl p-6 shadow-sm">
-          <div class="flex items-center space-x-4">
-            <div class="w-12 h-12 rounded-2xl bg-white text-indigo-600 flex items-center justify-center shadow-sm">
-              <span class="material-symbols-outlined">lightbulb</span>
+        <!-- ─── FEEDBACK / REPORT VIEW ─────────────────────────────────────── -->
+        <div *ngIf="feedbackActual" class="space-y-6 animate-fade-in">
+          <div class="flex items-center space-x-3 border-b border-slate-200 pb-4">
+            <span class="material-symbols-outlined text-emerald-500">verified</span>
+            <h3 class="text-xl font-bold text-slate-900 uppercase tracking-tight">
+              {{ idFase === 3 ? 'Análisis Estratégico' : 'Análisis del Perfil' }}
+            </h3>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2 space-y-6">
+              <div class="report-section">
+                <h4 class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-4">Contexto y Diagnóstico</h4>
+                <p class="text-slate-600 text-sm leading-relaxed italic">"{{ feedbackActual.texto }}"</p>
+              </div>
+              <div class="report-section" *ngIf="feedbackActual.resultados?.length">
+                <h4 class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-4">Motivación y Barreras</h4>
+                <div *ngFor="let res of feedbackActual.resultados" class="flex items-start p-4 bg-slate-50 rounded-lg mb-2">
+                  <span class="material-symbols-outlined text-indigo-400 mr-3 text-sm">radio_button_checked</span>
+                  <p class="text-slate-700 text-xs font-semibold leading-relaxed">{{ res }}</p>
+                </div>
+              </div>
+              <!-- Positioning Matrix (Phase 3 only) -->
+              <div class="report-section" *ngIf="feedbackActual.imagen">
+                <h4 class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-4">Matriz de Posicionamiento Competitivo</h4>
+                <div class="bg-white border-2 border-slate-100 rounded-xl p-6 shadow-inner flex justify-center">
+                  <img [src]="feedbackActual.imagen" class="max-h-[300px] object-contain rounded-lg shadow-md animate-fade-in" alt="Matriz de Posicionamiento">
+                </div>
+              </div>
             </div>
-            <div>
-              <h4 class="text-base font-black text-indigo-950 font-headline uppercase tracking-tight">Selección de
-                Métodos</h4>
-              <p class="text-sm text-indigo-800/70">Elige las alternativas adecuadas. Tu decisión conjunta será final
-                para esta fase.</p>
+
+            <div class="lg:col-span-1">
+              <div class="bg-indigo-900 text-white p-7 rounded-xl shadow-xl h-full flex flex-col justify-between">
+                <div>
+                  <h4 class="text-[9px] font-bold uppercase tracking-widest text-indigo-300 mb-5">Conclusión del Consultor</h4>
+                  <p class="text-lg font-bold leading-tight mb-8">{{ feedbackActual.conclusion }}</p>
+                </div>
+                <button (click)="finalizarReporte()"
+                        class="w-full bg-indigo-500 text-white py-4 rounded-lg font-bold text-[10px] uppercase tracking-widest hover:bg-indigo-400 transition-colors">
+                  {{ (idFase === 2 && !completedGroups.has('Padre')) ? 'Definir Siguiente Perfil' : 'Continuar' }}
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" *ngIf="!resultado">
-
-          <ng-container *ngIf="numeroFase === 1">
-            <button *ngFor="let alt of alternativas" (click)="toggleAlternativa(alt)"
-              [disabled]="bloqueado || isSubmitting"
-              class="group relative bg-white rounded-[2rem] p-8 border-2 text-left transition-all duration-300"
-              [ngClass]="{
-                'border-indigo-600 bg-indigo-50/30 shadow-xl ring-4 ring-indigo-600/5': alternativasSeleccionadas.has(alt.idAlternativa),
-                'border-slate-100 hover:border-indigo-300 shadow-sm': !alternativasSeleccionadas.has(alt.idAlternativa) && !bloqueado,
-                'opacity-60 grayscale-[0.5]': bloqueado && !alternativasSeleccionadas.has(alt.idAlternativa)
-              }">
-              <div class="flex items-start justify-between mb-6">
-                <span
-                  class="bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full">
-                  Opción {{ alt.orden }}
-                </span>
-                <span class="material-symbols-outlined text-2xl"
-                  [ngClass]="alternativasSeleccionadas.has(alt.idAlternativa) ? 'text-indigo-600' : 'text-slate-300'">
-                  {{ alternativasSeleccionadas.has(alt.idAlternativa) ? (bloqueado ? 'lock' : 'check_circle') :
-                  'radio_button_unchecked' }}
-                </span>
-              </div>
-              <p class="text-slate-700 text-base font-medium leading-relaxed">{{ alt.descAlternativa }}</p>
-            </button>
-          </ng-container>
-
-          <ng-container *ngIf="numeroFase === 2">
-            <button (click)="toggleAlternativaStatic(201)" [disabled]="bloqueado || isSubmitting"
-              class="group relative bg-white rounded-[2rem] p-8 border-2 text-left transition-all duration-300"
-              [ngClass]="alternativasSeleccionadas.has(201) ? 'border-indigo-600 bg-indigo-50/30 shadow-xl ring-4 ring-indigo-600/5' : 'border-slate-100 hover:border-indigo-300 shadow-sm'">
-              <div class="flex justify-between mb-6">
-                <span class="bg-slate-100 text-slate-500 text-[10px] font-black px-4 py-1.5 rounded-full">OPCIÓN
-                  1</span>
-                <span class="material-symbols-outlined text-2xl"
-                  [class.text-indigo-600]="alternativasSeleccionadas.has(201)">
-                  {{ alternativasSeleccionadas.has(201) ? 'check_circle' : 'radio_button_unchecked' }}
-                </span>
-              </div>
-              <h5 class="text-slate-900 font-bold mb-2 uppercase text-xs tracking-tight">Fortalecimiento de Perímetro
-              </h5>
-              <p class="text-slate-600 text-sm leading-relaxed">
-                Desplegar un sistema de firewall de última generación con inspección profunda de paquetes (DPI) y
-                segmentación de red para aislar los servidores comprometidos y evitar el movimiento lateral de la
-                amenaza.
-              </p>
-            </button>
-
-            <button (click)="toggleAlternativaStatic(202)" [disabled]="bloqueado || isSubmitting"
-              class="group relative bg-white rounded-[2rem] p-8 border-2 text-left transition-all duration-300"
-              [ngClass]="alternativasSeleccionadas.has(202) ? 'border-indigo-600 bg-indigo-50/30 shadow-xl ring-4 ring-indigo-600/5' : 'border-slate-100 hover:border-indigo-300 shadow-sm'">
-              <div class="flex justify-between mb-6">
-                <span class="bg-slate-100 text-slate-500 text-[10px] font-black px-4 py-1.5 rounded-full">OPCIÓN
-                  2</span>
-                <span class="material-symbols-outlined text-2xl"
-                  [class.text-indigo-600]="alternativasSeleccionadas.has(202)">
-                  {{ alternativasSeleccionadas.has(202) ? 'check_circle' : 'radio_button_unchecked' }}
-                </span>
-              </div>
-              <h5 class="text-slate-900 font-bold mb-2 uppercase text-xs tracking-tight">Gestión de Reputación</h5>
-              <p class="text-slate-600 text-sm leading-relaxed">
-                Ejecutar un protocolo de comunicación transparente notificando de inmediato a los clientes corporativos
-                afectados, detallando el alcance del incidente y las medidas de mitigación adoptadas para preservar la
-                confianza.
-              </p>
-            </button>
-            <button (click)="toggleAlternativaStatic(203)" [disabled]="bloqueado || isSubmitting"
-              class="group relative bg-white rounded-[2rem] p-8 border-2 text-left transition-all duration-300"
-              [ngClass]="alternativasSeleccionadas.has(203) ? 'border-indigo-600 bg-indigo-50/30 shadow-xl ring-4 ring-indigo-600/5' : 'border-slate-100 hover:border-indigo-300 shadow-sm'">
-              <div class="flex justify-between mb-6">
-                <span class="bg-slate-100 text-slate-500 text-[10px] font-black px-4 py-1.5 rounded-full">OPCIÓN
-                  3</span>
-                <span class="material-symbols-outlined text-2xl"
-                  [class.text-indigo-600]="alternativasSeleccionadas.has(203)">
-                  {{ alternativasSeleccionadas.has(203) ? 'check_circle' : 'radio_button_unchecked' }}
-                </span>
-              </div>
-              <h5 class="text-slate-900 font-bold mb-2 uppercase text-xs tracking-tight">Control de Acceso Crítico</h5>
-              <p class="text-slate-600 text-sm leading-relaxed">
-                Implementar una rotación masiva de credenciales y activar la autenticación de múltiples factores (MFA)
-                obligatoria para todas las cuentas administrativas y usuarios con acceso a bases de datos sensibles.
-              </p>
-            </button>
-            <button (click)="toggleAlternativaStatic(204)" [disabled]="bloqueado || isSubmitting"
-              class="group relative bg-white rounded-[2rem] p-8 border-2 text-left transition-all duration-300"
-              [ngClass]="alternativasSeleccionadas.has(204) ? 'border-indigo-600 bg-indigo-50/30 shadow-xl ring-4 ring-indigo-600/5' : 'border-slate-100 hover:border-indigo-300 shadow-sm'">
-              <div class="flex justify-between mb-6">
-                <span class="bg-slate-100 text-slate-500 text-[10px] font-black px-4 py-1.5 rounded-full">OPCIÓN
-                  3</span>
-                <span class="material-symbols-outlined text-2xl"
-                  [class.text-indigo-600]="alternativasSeleccionadas.has(204)">
-                  {{ alternativasSeleccionadas.has(204) ? 'check_circle' : 'radio_button_unchecked' }}
-                </span>
-              </div>
-              <h5 class="text-slate-900 font-bold mb-2 uppercase text-xs tracking-tight">Análisis Forense Digital</h5>
-              <p class="text-slate-600 text-sm leading-relaxed">
-                Contratar una firma de auditoría externa para realizar un análisis forense exhaustivo, identificar el
-                "paciente cero" y asegurar que no existan puertas traseras (backdoors) activas en el entorno de
-                producción.
-              </p>
-            </button>
-
-          </ng-container>
-        </div>
-
-        <div class="flex flex-col items-end space-y-4 pt-6" *ngIf="!bloqueado && !resultado">
-          <button (click)="enviarDecisiones()" [disabled]="alternativasSeleccionadas.size === 0 || isSubmitting"
-            class="px-12 py-5 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-xl bg-indigo-600 text-white hover:bg-indigo-700 disabled:bg-slate-200 disabled:text-slate-400">
-            <span>{{ isSubmitting ? 'Registrando...' : 'Confirmar y Enviar (' + alternativasSeleccionadas.size + ')'
-              }}</span>
+        <!-- ─── COMPLETION STATE ────────────────────────────────────────────── -->
+        <div *ngIf="siguienteFase && !feedbackActual && currentGroup === null" class="animate-bounce flex flex-col items-center pt-10">
+          <p class="text-slate-500 font-bold text-xs mb-4 uppercase tracking-widest">Fase completada exitosamente</p>
+          <button (click)="navegarSiguienteFase()"
+                  class="bg-indigo-600 text-white px-10 py-5 rounded-xl font-black text-xs uppercase tracking-[0.2em] shadow-2xl shadow-indigo-600/30 hover:bg-indigo-700 transition-all">
+            Avanzar a Fase {{ idFase + 1 }}
           </button>
         </div>
 
-        <!-- Submit Multiple Selection Button -->
-        <div class="flex justify-end mt-4" *ngIf="!bloqueado && !isSubmitting">
-          <button (click)="enviarDecisiones()"
-            [disabled]="alternativasSeleccionadas.size === 0"
-            class="px-8 py-4 rounded-xl font-bold text-sm tracking-wide transition-all duration-200 flex items-center space-x-2 font-headline shadow-lg"
-            [ngClass]="{
-              'bg-indigo-600 text-white hover:bg-indigo-700 active:scale-95 shadow-indigo-600/30': alternativasSeleccionadas.size > 0,
-              'bg-slate-200 text-slate-400 cursor-not-allowed shadow-none': alternativasSeleccionadas.size === 0
-            }">
-            <span>Confirmar y Enviar ({{ alternativasSeleccionadas.size }})</span>
-            <span class="material-symbols-outlined">send</span>
-          </button>
-        </div>
-
-        <!-- Submitting indicator -->
-        <div *ngIf="isSubmitting" class="flex items-center justify-center py-6">
-          <span class="material-symbols-outlined animate-spin text-2xl text-indigo-500 mr-2">progress_activity</span>
-          <span class="text-sm text-slate-500 font-body">Registrando decisión...</span>
-        </div>
-
-        <!-- Result Card: Next Phase Info (shown after decision is registered) -->
-        <div *ngIf="siguienteFase" class="animate-fade-in">
-          <div class="bg-white rounded-2xl p-8 shadow-sm border border-indigo-200">
-
-            <!-- Success header -->
-            <div class="flex items-center space-x-3 mb-6">
-              <div class="w-12 h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center flex-shrink-0">
-                <span class="material-symbols-outlined">check_circle</span>
-              </div>
-              <div>
-                <h4 class="text-lg font-bold text-indigo-900 font-headline">¡Decisión registrada!</h4>
-                <p class="text-xs text-slate-500 font-body">Tu selección ha sido guardada exitosamente.</p>
-              </div>
-            </div>
-
-            <!-- Next phase preview -->
-            <div class="bg-indigo-50 rounded-xl p-6 border border-indigo-100">
-              <div class="flex items-center space-x-2 mb-3">
-                <span class="material-symbols-outlined text-indigo-600">arrow_forward</span>
-                <p class="text-sm font-bold text-indigo-900 font-headline">Siguiente fase disponible</p>
-              </div>
-              <p class="text-indigo-800 text-sm leading-relaxed font-body mb-4">
-                <strong>{{ siguienteFase.nombre }}</strong>
-              </p>
-              <button (click)="navegarSiguienteFase()"
-                class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-indigo-700 active:scale-[0.98] transition-all shadow-lg shadow-indigo-600/30 flex items-center space-x-2 font-headline">
-                <span>Continuar a la siguiente fase</span>
-                <span class="material-symbols-outlined">arrow_forward</span>
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </main>

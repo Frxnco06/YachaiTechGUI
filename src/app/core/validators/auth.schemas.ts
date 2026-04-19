@@ -8,7 +8,10 @@ export const LoginSchema = z.object({
 export type LoginData = z.infer<typeof LoginSchema>;
 
 export const RegisterSchema = z.object({
-  correo: z.string().min(1, 'El correo es obligatorio').email('Formato de correo inválido'),
+  correo: z.string()
+    .min(1, 'El correo es obligatorio')
+    .email('Formato de correo inválido')
+    .endsWith('@cibertec.edu.pe', 'El correo debe ser institucional (@cibertec.edu.pe)'),
   contrasena: z.string()
     .min(1, 'La contraseña es obligatoria')
     .min(8, 'La contraseña debe tener al menos 8 caracteres'),

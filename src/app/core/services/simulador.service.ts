@@ -45,4 +45,11 @@ export class SimuladorService {
   obtenerHistorial(): Observable<HistorialSesion> {
     return this.http.get<HistorialSesion>(`${this.SIMULADOR_URL}/historial`);
   }
+
+  chatConIA(mensajeUsuario: string, contextoInforme: string): Observable<{ respuesta: string }> {
+    return this.http.post<{ respuesta: string }>(`${this.SIMULADOR_URL}/chat`, {
+      mensajeUsuario,
+      contextoInforme
+    });
+  }
 }
