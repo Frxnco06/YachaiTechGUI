@@ -5,8 +5,6 @@ import { Router, RouterLink } from '@angular/router';
 import { SimuladorService } from '../../../core/services/simulador.service';
 import { HistorialSesion } from '../../../core/models/simulador.interface';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-
 interface ChatMessage {
   role: 'user' | 'assistant';
   content: string;
@@ -20,7 +18,6 @@ interface Escenario {
   respuesta: string;
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
 
 @Component({
   selector: 'app-feedback',
@@ -33,14 +30,12 @@ export class FeedbackComponent implements OnInit {
 
   @ViewChild('chatEnd') chatEnd!: ElementRef;
 
-  // ── State ──────────────────────────────────────────────────────────────────
   historial: HistorialSesion | null = null;
   isLoading = true;
   mensajeUsuario = '';
   chatMessages: ChatMessage[] = [];
   isTyping = false;
 
-  // ── Scenarios ──────────────────────────────────────────────────────────────
   readonly escenarios: Escenario[] = [
     {
       titulo: 'Escenario Muy Positivo',
@@ -72,7 +67,6 @@ export class FeedbackComponent implements OnInit {
     }
   ];
 
-  // ── Lifecycle ──────────────────────────────────────────────────────────────
   constructor(
     private readonly simuladorService: SimuladorService,
     private readonly router: Router,
@@ -83,7 +77,6 @@ export class FeedbackComponent implements OnInit {
     this.cargarHistorial();
   }
 
-  // ── Data ───────────────────────────────────────────────────────────────────
   cargarHistorial(): void {
     this.simuladorService.obtenerHistorial().subscribe({
       next: data => {
@@ -103,7 +96,6 @@ export class FeedbackComponent implements OnInit {
     });
   }
 
-  // ── Scenario logic ─────────────────────────────────────────────────────────
   get escenarioActual(): Escenario {
     const pts = this.historial?.puntajeTotal ?? 0;
     if (pts >= 18) return this.escenarios[0];
@@ -112,7 +104,6 @@ export class FeedbackComponent implements OnInit {
     return this.escenarios[3];
   }
 
-  // ── Chat ───────────────────────────────────────────────────────────────────
   private iniciarChatContextual(): void {
     const escenario = this.escenarioActual;
     const saludo = `¡Hola! Soy tu coach de marketing. Acabo de revisar tu informe: obtuviste **${this.historial?.puntajeTotal} puntos** — *${escenario.titulo}*.\n\n¿Tienes alguna duda sobre tus decisiones o quieres reflexionar sobre alguna estrategia en particular?`;

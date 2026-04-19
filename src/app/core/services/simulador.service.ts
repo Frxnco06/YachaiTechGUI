@@ -26,11 +26,7 @@ export class SimuladorService {
     return this.http.get<Sesion>(`${this.SIMULADOR_URL}/sesiones/activa`);
   }
 
-  /**
-   * Registra una decisión para una fase dentro de una sesión.
-   * El backend espera el body completo { idsAlternativas, idSesion }.
-   * Retorna la siguiente fase (FaseDtoResponse).
-   */
+ 
   registrarDecision(sesionId: number, request: DecisionRequest): Observable<DecisionResponse> {
     return this.http.post<DecisionResponse>(
       `${this.SIMULADOR_URL}/sesiones/${sesionId}/decisiones`,
