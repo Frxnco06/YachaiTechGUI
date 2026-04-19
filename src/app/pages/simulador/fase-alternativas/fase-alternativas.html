@@ -1,23 +1,25 @@
 <div class="flex h-screen bg-slate-50 font-sans overflow-hidden">
-
-  <!-- Sidebar -->
-  <aside class="hidden md:flex w-64 bg-slate-900 text-white flex-col shadow-xl z-30">
+  <!-- Sidebar Original (Oscuro Premium) -->
+  <aside class="hidden md:flex w-64 bg-slate-900 text-white flex-col shadow-xl z-30 transition-all">
     <div class="h-16 flex items-center px-6 border-b border-white/5">
       <div class="w-6 h-6 bg-indigo-500 rounded-md mr-3 flex items-center justify-center">
         <span class="material-symbols-outlined text-white text-base">science</span>
       </div>
       <h1 class="text-lg font-bold tracking-tight text-white font-headline">Yachay<span class="text-indigo-400">Pro</span></h1>
     </div>
+    
     <nav class="flex-grow py-6 px-3 space-y-1">
-      <a routerLink="/formulario" class="flex items-center space-x-3 px-3 py-2 text-slate-400 hover:bg-white/5 hover:text-white rounded-lg transition-all group">
+      <a routerLink="/formulario" class="flex items-center space-x-3 px-3 py-2 text-slate-400 hover:bg-white/5 hover:text-white rounded-lg transition-all group cursor-pointer">
         <span class="material-symbols-outlined text-xl group-hover:text-indigo-400 transition-colors">dashboard</span>
-        <span class="font-semibold text-xs uppercase tracking-wider">Dashboard</span>
+        <span class="font-semibold text-xs uppercase tracking-wider">Panel Ejecutivo</span>
       </a>
+      
       <div class="flex items-center space-x-3 px-3 py-2 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-lg">
         <span class="material-symbols-outlined text-xl">analytics</span>
         <span class="font-semibold text-xs uppercase tracking-wider">Simulación</span>
       </div>
     </nav>
+
     <div class="p-5 border-t border-white/5">
       <div class="mb-4">
         <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-2">Progreso</p>
@@ -32,10 +34,8 @@
     </div>
   </aside>
 
-  <!-- Main Content -->
   <main class="flex-grow flex flex-col relative overflow-y-auto">
 
-    <!-- Sticky Header -->
     <header class="h-16 bg-white sticky top-0 border-b border-slate-200 flex items-center justify-between px-6 md:px-10 z-20">
       <div class="flex items-center space-x-3">
         <div class="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center text-xs font-bold">
@@ -75,10 +75,8 @@
       </div>
     </header>
 
-    <!-- Page Content -->
     <div class="p-6 md:p-10 max-w-5xl mx-auto w-full">
 
-      <!-- Loading State -->
       <div *ngIf="isLoading" class="flex flex-col items-center justify-center py-24">
         <span class="material-symbols-outlined animate-spin text-4xl text-indigo-500 mb-3">progress_activity</span>
         <p class="text-slate-400 font-bold uppercase tracking-widest text-[9px]">Inicializando...</p>
@@ -86,7 +84,6 @@
 
       <div *ngIf="!isLoading" class="space-y-6 animate-fade-in">
 
-        <!-- ─── COLLAPSIBLE PHASE 1 SUMMARY (Phase 2 only) ────────────────── -->
         <div *ngIf="idFase === 2" class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
           <button (click)="summaryExpanded = !summaryExpanded"
                   class="w-full flex items-center justify-between p-5 bg-slate-50/50 hover:bg-slate-50 transition-colors">
@@ -121,7 +118,6 @@
           </div>
         </div>
 
-        <!-- ─── PHASE CONTEXT BANNER ───────────────────────────────────────── -->
         <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
           <ng-container [ngSwitch]="idFase">
             <ng-container *ngSwitchCase="1">
@@ -142,7 +138,6 @@
           </ng-container>
         </div>
 
-        <!-- ─── HUB VIEW (Phase 1 & Phase 3) ─────────────────────────────── -->
         <ng-container *ngIf="isHubPhase && currentGroup === null && !feedbackActual">
           <div class="space-y-6">
             <div class="flex items-end justify-between border-b border-slate-100 pb-4">
@@ -179,7 +174,6 @@
               </div>
             </div>
 
-            <!-- Empty state if DB not loaded -->
             <ng-template #noContent>
               <div class="flex flex-col items-center justify-center py-20 px-6 text-center animate-fade-in">
                 <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-4">
@@ -197,7 +191,6 @@
           </div>
         </ng-container>
 
-        <!-- ─── SELECTION VIEW (within a group) ────────────────────────────── -->
         <div *ngIf="currentGroup && !feedbackActual" class="space-y-6 animate-fade-in">
           <div class="flex items-center justify-between">
             <button (click)="currentGroup = null" class="flex items-center space-x-2 text-slate-400 hover:text-slate-900 transition-colors">
@@ -253,7 +246,6 @@
           </div>
         </div>
 
-        <!-- ─── FEEDBACK / REPORT VIEW ─────────────────────────────────────── -->
         <div *ngIf="feedbackActual" class="space-y-6 animate-fade-in">
           <div class="flex items-center space-x-3 border-b border-slate-200 pb-4">
             <span class="material-symbols-outlined text-emerald-500">verified</span>
@@ -275,7 +267,6 @@
                   <p class="text-slate-700 text-xs font-semibold leading-relaxed">{{ res }}</p>
                 </div>
               </div>
-              <!-- Positioning Matrix (Phase 3 only) -->
               <div class="report-section" *ngIf="feedbackActual.imagen">
                 <h4 class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-4">Matriz de Posicionamiento Competitivo</h4>
                 <div class="bg-white border-2 border-slate-100 rounded-xl p-6 shadow-inner flex justify-center">
@@ -299,7 +290,6 @@
           </div>
         </div>
 
-        <!-- ─── COMPLETION STATE ────────────────────────────────────────────── -->
         <div *ngIf="siguienteFase && !feedbackActual && currentGroup === null" class="animate-bounce flex flex-col items-center pt-10">
           <p class="text-slate-500 font-bold text-xs mb-4 uppercase tracking-widest">Fase completada exitosamente</p>
           <button (click)="navegarSiguienteFase()"

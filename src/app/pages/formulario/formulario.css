@@ -1,0 +1,10 @@
+.font-headline { font-family: 'Inter', sans-serif; }
+.font-body { font-family: 'Inter', sans-serif; }
+.font-label { font-family: 'Inter', sans-serif; }
+
+.bg-glass { background-color: rgba(248, 249, 255, 0.7); backdrop-filter: blur(16px); }
+.bg-glass-dark { background-color: rgba(11, 28, 48, 0.8); backdrop-filter: blur(16px); }
+
+.gradient-btn { background: linear-gradient(135deg, #3525cd, #4f46e5); }
+.gradient-btn:active { background: linear-gradient(315deg, #3525cd, #4f46e5); }
+.shadow-ambient { box-shadow: 0 20px 40px -12px rgba(11, 28, 48, 0.08); }
