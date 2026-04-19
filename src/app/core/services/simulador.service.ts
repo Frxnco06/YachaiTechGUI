@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Fase, Alternativa, Sesion, DecisionRequest, DecisionResponse } from '../models/simulador.interface';
+import { Fase, Alternativa, Sesion, DecisionRequest, DecisionResponse, HistorialSesion } from '../models/simulador.interface';
 
 @Injectable({ providedIn: 'root' })
 export class SimuladorService {
@@ -10,12 +10,12 @@ export class SimuladorService {
 
   constructor(private http: HttpClient) {}
 
-  obtenerFase(numero: number): Observable<Fase> {
-    return this.http.get<Fase>(`${this.FASES_URL}/${numero}`);
+  obtenerFase(idFase: number): Observable<Fase> {
+    return this.http.get<Fase>(`${this.FASES_URL}/${idFase}`);
   }
 
-  obtenerAlternativas(numero: number): Observable<Alternativa[]> {
-    return this.http.get<Alternativa[]>(`${this.FASES_URL}/${numero}/alternativas`);
+  obtenerAlternativas(idFase: number): Observable<Alternativa[]> {
+    return this.http.get<Alternativa[]>(`${this.FASES_URL}/${idFase}/alternativas`);
   }
 
   crearSesion(): Observable<Sesion> {
@@ -26,10 +26,26 @@ export class SimuladorService {
     return this.http.get<Sesion>(`${this.SIMULADOR_URL}/sesiones/activa`);
   }
 
-  registrarDecision(sesionId: number, data: DecisionRequest): Observable<DecisionResponse> {
+ 
+  registrarDecision(sesionId: number, request: DecisionRequest): Observable<DecisionResponse> {
     return this.http.post<DecisionResponse>(
       `${this.SIMULADOR_URL}/sesiones/${sesionId}/decisiones`,
-      data
+      request
     );
+  }
+
+  obtenerFaseActual(): Observable<Fase | null> {
+    return this.http.get<Fase | null>(`${this.SIMULADOR_URL}/fase-actual`);
+  }
+
+  obtenerHistorial(): Observable<HistorialSesion> {
+    return this.http.get<HistorialSesion>(`${this.SIMULADOR_URL}/historial`);
+  }
+
+  chatConIA(mensajeUsuario: string, contextoInforme: string): Observable<{ respuesta: string }> {
+    return this.http.post<{ respuesta: string }>(`${this.SIMULADOR_URL}/chat`, {
+      mensajeUsuario,
+      contextoInforme
+    });
   }
 }
