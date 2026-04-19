@@ -1,110 +1,205 @@
-<div class="flex h-screen bg-surface font-body overflow-hidden">
-  
-  <!-- Sidebar -->
-  <aside class="w-64 bg-primary-container text-white flex flex-col shadow-lg z-20">
-    <div class="h-20 flex items-center px-6 border-b border-white/10">
-      <h1 class="text-2xl font-extrabold tracking-tight text-white/90 font-headline">Yachay-Pro</h1>
+<div class="flex h-screen bg-slate-50 font-sans overflow-hidden">
+
+  <aside class="hidden md:flex w-72 bg-slate-900 text-white flex-col shadow-2xl z-30">
+    <div class="h-20 flex items-center px-8 border-b border-white/5">
+      <h1 class="text-2xl font-black tracking-tighter text-indigo-400 font-headline italic">Yachay-Pro</h1>
     </div>
-    
-    <nav class="flex-grow py-6 px-4 space-y-2">
-      <a routerLink="/formulario" class="flex items-center space-x-3 px-4 py-3 text-white/70 hover:bg-white/5 hover:text-white rounded-lg transition-colors">
+    <nav class="flex-grow py-8 px-4 space-y-3">
+      <a routerLink="/formulario"
+        class="flex items-center space-x-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-white rounded-xl transition-all">
         <span class="material-symbols-outlined">dashboard</span>
-        <span class="font-semibold text-sm uppercase tracking-wider">Dashboard</span>
+        <span class="font-bold text-xs uppercase tracking-widest">Dashboard</span>
       </a>
-      
-      <a class="flex items-center space-x-3 px-4 py-3 bg-secondary/20 text-secondary border-r-4 border-secondary rounded-l-lg transition-colors cursor-default">
+      <a
+        class="flex items-center space-x-3 px-4 py-3 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-xl cursor-default">
         <span class="material-symbols-outlined">science</span>
-        <span class="font-semibold text-sm uppercase tracking-wider">Simulador</span>
+        <span class="font-bold text-xs uppercase tracking-widest">Simulador</span>
       </a>
     </nav>
-
-
-
-    <div class="p-4 border-t border-white/10">
-      <button (click)="logout()" class="w-full flex items-center justify-center space-x-2 px-4 py-3 text-white/80 hover:bg-red-500/20 hover:text-red-400 rounded-lg transition-colors">
+    <div class="p-6 border-t border-white/5">
+      <button (click)="logout()"
+        class="w-full flex items-center justify-center space-x-2 px-4 py-3 text-slate-500 hover:text-red-400 transition-colors">
         <span class="material-symbols-outlined">logout</span>
-        <span class="font-semibold text-sm uppercase tracking-wider">Cerrar Sesión</span>
+        <span class="font-bold text-xs uppercase tracking-widest">Cerrar Sesión</span>
       </button>
     </div>
   </aside>
 
-  <!-- Main Content -->
-  <main class="flex-grow flex flex-col relative overflow-y-auto bg-surface">
-    
-    <!-- Topbar -->
-    <header class="h-20 bg-white shadow-sm flex items-center justify-between px-8 z-10">
+  <main class="flex-grow flex flex-col relative overflow-y-auto">
+
+    <header
+      class="h-20 bg-white/70 backdrop-blur-md sticky top-0 border-b border-slate-200 flex items-center justify-between px-6 md:px-12 z-20">
       <div class="flex items-center space-x-3">
-        <span class="material-symbols-outlined text-secondary text-2xl">quiz</span>
-        <h2 class="text-xl font-bold text-primary font-headline">Fase {{ idFase }} — Selección</h2>
+        <span class="material-symbols-outlined text-indigo-600 text-2xl font-bold">quiz</span>
+        <h2 class="text-lg md:text-xl font-extrabold text-slate-800 font-headline uppercase tracking-tight">
+          Fase {{ idFase }} <span class="text-slate-300 mx-2">—</span> Selección
+        </h2>
       </div>
-      
-      <div class="flex items-center space-x-3">
-        <a [routerLink]="['/simulador/fase', idFase, 'lectura']" 
-           class="text-sm text-on-surface-variant hover:text-secondary transition-colors flex items-center space-x-1 font-body">
-          <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-          <span>Volver a la lectura</span>
-        </a>
-      </div>
+      <a [routerLink]="['/simulador/fase', idFase, 'lectura']"
+        class="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-indigo-600 transition-colors bg-slate-100 px-4 py-2 rounded-lg flex items-center space-x-1 font-body">
+        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+        <span>Volver a la lectura</span>
+      </a>
     </header>
 
-    <!-- Content -->
-    <div class="p-8 space-y-6 animate-fade-in">
+    <div class="p-6 md:p-10 max-w-5xl mx-auto w-full animate-fade-in">
 
-      <!-- Loading State -->
-      <div *ngIf="isLoading" class="flex items-center justify-center py-20">
-        <span class="material-symbols-outlined animate-spin text-4xl text-secondary">progress_activity</span>
+      <div *ngIf="isLoading" class="flex flex-col items-center justify-center py-24">
+        <span class="material-symbols-outlined animate-spin text-5xl text-indigo-500">progress_activity</span>
       </div>
 
-      <div *ngIf="!isLoading" class="max-w-4xl mx-auto space-y-6">
+      <div *ngIf="!isLoading" class="space-y-8">
 
-        <!-- Instruction -->
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-outline-variant/20">
-          <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center flex-shrink-0">
+        <div class="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-sm border border-slate-100">
+          <div class="flex items-center space-x-3 mb-6">
+            <span
+              class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest">
+              Misión Actual - Fase {{ numeroFase }}
+            </span>
+          </div>
+
+          <div *ngIf="numeroFase === 1">
+            <h3 class="text-2xl font-black text-slate-800 mb-4 font-headline uppercase italic tracking-tight">
+              Investigación y Diagnóstico</h3>
+            <p class="text-slate-600 leading-relaxed text-lg border-l-4 border-slate-200 pl-6">
+              Se ha detectado una anomalía en los patrones de cancelación de usuarios. Como analista, debes identificar
+              el origen del problema.
+            </p>
+          </div>
+
+          <div *ngIf="numeroFase === 2">
+            <h3 class="text-2xl font-black text-slate-800 mb-4 font-headline uppercase italic tracking-tight">Gestión de
+              Crisis de Datos</h3>
+            <p class="text-slate-600 leading-relaxed text-lg border-l-4 border-slate-200 pl-6">
+              La brecha de seguridad ha escalado. Se ha confirmado que el acceso no autorizado comprometió la base de
+              datos de clientes corporativos. Debes seleccionar las medidas de contención inmediata.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-indigo-50 border border-indigo-100 rounded-3xl p-6 shadow-sm">
+          <div class="flex items-center space-x-4">
+            <div class="w-12 h-12 rounded-2xl bg-white text-indigo-600 flex items-center justify-center shadow-sm">
               <span class="material-symbols-outlined">lightbulb</span>
             </div>
             <div>
-              <h4 class="text-sm font-bold text-primary font-headline">Selecciona tus métodos de investigación</h4>
-              <p class="text-xs text-on-surface-variant font-body">Elige una o más alternativas y confirma. Tu decisión conjunta será final.</p>
+              <h4 class="text-base font-black text-indigo-950 font-headline uppercase tracking-tight">Selección de
+                Métodos</h4>
+              <p class="text-sm text-indigo-800/70">Elige las alternativas adecuadas. Tu decisión conjunta será final
+                para esta fase.</p>
             </div>
           </div>
         </div>
 
-        <!-- Alternatives Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <button *ngFor="let alt of alternativas; let i = index"
-            (click)="toggleAlternativa(alt)"
-            [disabled]="bloqueado || isSubmitting"
-            class="bg-white rounded-2xl p-6 shadow-sm border-2 text-left transition-all duration-300 group relative overflow-hidden"
-            [ngClass]="{
-              'border-secondary ring-2 ring-secondary/20 scale-[1.02]': alternativasSeleccionadas.has(alt.idAlternativa),
-              'border-outline-variant/20 hover:border-secondary/50 hover:shadow-md': !alternativasSeleccionadas.has(alt.idAlternativa) && !bloqueado,
-              'opacity-50 cursor-not-allowed': bloqueado && !alternativasSeleccionadas.has(alt.idAlternativa),
-              'cursor-pointer': !bloqueado && !isSubmitting
-            }">
-            
-            <!-- Option Badge -->
-            <div class="flex items-start justify-between mb-4">
-              <span class="bg-primary/5 text-primary text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full font-headline">
-                Opción {{ alt.orden }}
-              </span>
-              <span *ngIf="alternativasSeleccionadas.has(alt.idAlternativa)"
-                class="material-symbols-outlined text-secondary text-xl">
-                {{ bloqueado ? 'lock' : 'check_box' }}
-              </span>
-              <span *ngIf="!alternativasSeleccionadas.has(alt.idAlternativa) && !bloqueado"
-                class="material-symbols-outlined text-outline-variant text-xl">check_box_outline_blank</span>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" *ngIf="!resultado">
 
-            <!-- Description -->
-            <p class="text-on-surface text-sm leading-relaxed font-body">{{ alt.descAlternativa }}</p>
+          <ng-container *ngIf="numeroFase === 1">
+            <button *ngFor="let alt of alternativas" (click)="toggleAlternativa(alt)"
+              [disabled]="bloqueado || isSubmitting"
+              class="group relative bg-white rounded-[2rem] p-8 border-2 text-left transition-all duration-300"
+              [ngClass]="{
+                'border-indigo-600 bg-indigo-50/30 shadow-xl ring-4 ring-indigo-600/5': alternativasSeleccionadas.has(alt.idAlternativa),
+                'border-slate-100 hover:border-indigo-300 shadow-sm': !alternativasSeleccionadas.has(alt.idAlternativa) && !bloqueado,
+                'opacity-60 grayscale-[0.5]': bloqueado && !alternativasSeleccionadas.has(alt.idAlternativa)
+              }">
+              <div class="flex items-start justify-between mb-6">
+                <span
+                  class="bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full">
+                  Opción {{ alt.orden }}
+                </span>
+                <span class="material-symbols-outlined text-2xl"
+                  [ngClass]="alternativasSeleccionadas.has(alt.idAlternativa) ? 'text-indigo-600' : 'text-slate-300'">
+                  {{ alternativasSeleccionadas.has(alt.idAlternativa) ? (bloqueado ? 'lock' : 'check_circle') :
+                  'radio_button_unchecked' }}
+                </span>
+              </div>
+              <p class="text-slate-700 text-base font-medium leading-relaxed">{{ alt.descAlternativa }}</p>
+            </button>
+          </ng-container>
 
-            <!-- Hover indicator (only when not locked) -->
-            <div *ngIf="!bloqueado"
-              class="mt-4 flex items-center space-x-1 text-secondary opacity-0 group-hover:opacity-100 transition-opacity">
-              <span class="material-symbols-outlined text-[16px]">touch_app</span>
-              <span class="text-[11px] font-bold uppercase tracking-widest">Seleccionar</span>
-            </div>
+          <ng-container *ngIf="numeroFase === 2">
+            <button (click)="toggleAlternativaStatic(201)" [disabled]="bloqueado || isSubmitting"
+              class="group relative bg-white rounded-[2rem] p-8 border-2 text-left transition-all duration-300"
+              [ngClass]="alternativasSeleccionadas.has(201) ? 'border-indigo-600 bg-indigo-50/30 shadow-xl ring-4 ring-indigo-600/5' : 'border-slate-100 hover:border-indigo-300 shadow-sm'">
+              <div class="flex justify-between mb-6">
+                <span class="bg-slate-100 text-slate-500 text-[10px] font-black px-4 py-1.5 rounded-full">OPCIÓN
+                  1</span>
+                <span class="material-symbols-outlined text-2xl"
+                  [class.text-indigo-600]="alternativasSeleccionadas.has(201)">
+                  {{ alternativasSeleccionadas.has(201) ? 'check_circle' : 'radio_button_unchecked' }}
+                </span>
+              </div>
+              <h5 class="text-slate-900 font-bold mb-2 uppercase text-xs tracking-tight">Fortalecimiento de Perímetro
+              </h5>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Desplegar un sistema de firewall de última generación con inspección profunda de paquetes (DPI) y
+                segmentación de red para aislar los servidores comprometidos y evitar el movimiento lateral de la
+                amenaza.
+              </p>
+            </button>
+
+            <button (click)="toggleAlternativaStatic(202)" [disabled]="bloqueado || isSubmitting"
+              class="group relative bg-white rounded-[2rem] p-8 border-2 text-left transition-all duration-300"
+              [ngClass]="alternativasSeleccionadas.has(202) ? 'border-indigo-600 bg-indigo-50/30 shadow-xl ring-4 ring-indigo-600/5' : 'border-slate-100 hover:border-indigo-300 shadow-sm'">
+              <div class="flex justify-between mb-6">
+                <span class="bg-slate-100 text-slate-500 text-[10px] font-black px-4 py-1.5 rounded-full">OPCIÓN
+                  2</span>
+                <span class="material-symbols-outlined text-2xl"
+                  [class.text-indigo-600]="alternativasSeleccionadas.has(202)">
+                  {{ alternativasSeleccionadas.has(202) ? 'check_circle' : 'radio_button_unchecked' }}
+                </span>
+              </div>
+              <h5 class="text-slate-900 font-bold mb-2 uppercase text-xs tracking-tight">Gestión de Reputación</h5>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Ejecutar un protocolo de comunicación transparente notificando de inmediato a los clientes corporativos
+                afectados, detallando el alcance del incidente y las medidas de mitigación adoptadas para preservar la
+                confianza.
+              </p>
+            </button>
+            <button (click)="toggleAlternativaStatic(203)" [disabled]="bloqueado || isSubmitting"
+              class="group relative bg-white rounded-[2rem] p-8 border-2 text-left transition-all duration-300"
+              [ngClass]="alternativasSeleccionadas.has(203) ? 'border-indigo-600 bg-indigo-50/30 shadow-xl ring-4 ring-indigo-600/5' : 'border-slate-100 hover:border-indigo-300 shadow-sm'">
+              <div class="flex justify-between mb-6">
+                <span class="bg-slate-100 text-slate-500 text-[10px] font-black px-4 py-1.5 rounded-full">OPCIÓN
+                  3</span>
+                <span class="material-symbols-outlined text-2xl"
+                  [class.text-indigo-600]="alternativasSeleccionadas.has(203)">
+                  {{ alternativasSeleccionadas.has(203) ? 'check_circle' : 'radio_button_unchecked' }}
+                </span>
+              </div>
+              <h5 class="text-slate-900 font-bold mb-2 uppercase text-xs tracking-tight">Control de Acceso Crítico</h5>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Implementar una rotación masiva de credenciales y activar la autenticación de múltiples factores (MFA)
+                obligatoria para todas las cuentas administrativas y usuarios con acceso a bases de datos sensibles.
+              </p>
+            </button>
+            <button (click)="toggleAlternativaStatic(204)" [disabled]="bloqueado || isSubmitting"
+              class="group relative bg-white rounded-[2rem] p-8 border-2 text-left transition-all duration-300"
+              [ngClass]="alternativasSeleccionadas.has(204) ? 'border-indigo-600 bg-indigo-50/30 shadow-xl ring-4 ring-indigo-600/5' : 'border-slate-100 hover:border-indigo-300 shadow-sm'">
+              <div class="flex justify-between mb-6">
+                <span class="bg-slate-100 text-slate-500 text-[10px] font-black px-4 py-1.5 rounded-full">OPCIÓN
+                  3</span>
+                <span class="material-symbols-outlined text-2xl"
+                  [class.text-indigo-600]="alternativasSeleccionadas.has(204)">
+                  {{ alternativasSeleccionadas.has(204) ? 'check_circle' : 'radio_button_unchecked' }}
+                </span>
+              </div>
+              <h5 class="text-slate-900 font-bold mb-2 uppercase text-xs tracking-tight">Análisis Forense Digital</h5>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Contratar una firma de auditoría externa para realizar un análisis forense exhaustivo, identificar el
+                "paciente cero" y asegurar que no existan puertas traseras (backdoors) activas en el entorno de
+                producción.
+              </p>
+            </button>
+
+          </ng-container>
+        </div>
+
+        <div class="flex flex-col items-end space-y-4 pt-6" *ngIf="!bloqueado && !resultado">
+          <button (click)="enviarDecisiones()" [disabled]="alternativasSeleccionadas.size === 0 || isSubmitting"
+            class="px-12 py-5 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-xl bg-indigo-600 text-white hover:bg-indigo-700 disabled:bg-slate-200 disabled:text-slate-400">
+            <span>{{ isSubmitting ? 'Registrando...' : 'Confirmar y Enviar (' + alternativasSeleccionadas.size + ')'
+              }}</span>
           </button>
         </div>
 
@@ -114,7 +209,7 @@
             [disabled]="alternativasSeleccionadas.size === 0"
             class="px-8 py-4 rounded-xl font-bold text-sm tracking-wide transition-all duration-200 flex items-center space-x-2 font-headline shadow-lg"
             [ngClass]="{
-              'bg-secondary text-white hover:bg-secondary/90 active:scale-95 shadow-secondary/30': alternativasSeleccionadas.size > 0,
+              'bg-indigo-600 text-white hover:bg-indigo-700 active:scale-95 shadow-indigo-600/30': alternativasSeleccionadas.size > 0,
               'bg-slate-200 text-slate-400 cursor-not-allowed shadow-none': alternativasSeleccionadas.size === 0
             }">
             <span>Confirmar y Enviar ({{ alternativasSeleccionadas.size }})</span>
@@ -124,13 +219,13 @@
 
         <!-- Submitting indicator -->
         <div *ngIf="isSubmitting" class="flex items-center justify-center py-6">
-          <span class="material-symbols-outlined animate-spin text-2xl text-secondary mr-2">progress_activity</span>
-          <span class="text-sm text-on-surface-variant font-body">Registrando decisión...</span>
+          <span class="material-symbols-outlined animate-spin text-2xl text-indigo-500 mr-2">progress_activity</span>
+          <span class="text-sm text-slate-500 font-body">Registrando decisión...</span>
         </div>
 
         <!-- Result Card: Next Phase Info (shown after decision is registered) -->
         <div *ngIf="siguienteFase" class="animate-fade-in">
-          <div class="bg-white rounded-2xl p-8 shadow-sm border border-secondary/30">
+          <div class="bg-white rounded-2xl p-8 shadow-sm border border-indigo-200">
 
             <!-- Success header -->
             <div class="flex items-center space-x-3 mb-6">
@@ -138,56 +233,24 @@
                 <span class="material-symbols-outlined">check_circle</span>
               </div>
               <div>
-                <h4 class="text-lg font-bold text-primary font-headline">¡Decisión registrada!</h4>
-                <p class="text-xs text-on-surface-variant font-body">Tu selección ha sido guardada exitosamente.</p>
+                <h4 class="text-lg font-bold text-indigo-900 font-headline">¡Decisión registrada!</h4>
+                <p class="text-xs text-slate-500 font-body">Tu selección ha sido guardada exitosamente.</p>
               </div>
             </div>
 
             <!-- Next phase preview -->
-            <div class="bg-surface rounded-xl p-6 border border-outline-variant/10">
+            <div class="bg-indigo-50 rounded-xl p-6 border border-indigo-100">
               <div class="flex items-center space-x-2 mb-3">
-                <span class="material-symbols-outlined text-secondary">arrow_forward</span>
-                <p class="text-sm font-bold text-primary font-headline">Siguiente fase disponible</p>
+                <span class="material-symbols-outlined text-indigo-600">arrow_forward</span>
+                <p class="text-sm font-bold text-indigo-900 font-headline">Siguiente fase disponible</p>
               </div>
-              <p class="text-on-surface text-sm leading-relaxed font-body mb-4">
+              <p class="text-indigo-800 text-sm leading-relaxed font-body mb-4">
                 <strong>{{ siguienteFase.nombre }}</strong>
               </p>
               <button (click)="navegarSiguienteFase()"
-                class="bg-secondary text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-secondary/90 active:scale-[0.98] transition-all shadow-lg shadow-secondary/30 flex items-center space-x-2 font-headline">
+                class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-indigo-700 active:scale-[0.98] transition-all shadow-lg shadow-indigo-600/30 flex items-center space-x-2 font-headline">
                 <span>Continuar a la siguiente fase</span>
                 <span class="material-symbols-outlined">arrow_forward</span>
-              </button>
-            </div>
-
-            <!-- Lock message -->
-            <div class="mt-4 flex items-center space-x-2 text-on-surface-variant">
-              <span class="material-symbols-outlined text-[16px]">lock</span>
-              <p class="text-xs font-body">Tu decisión ha sido registrada y no puede ser modificada.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Simulator Completed Card (shown when last phase is finished) -->
-        <div *ngIf="simuladorCompletado" class="animate-fade-in">
-          <div class="bg-white rounded-2xl p-8 shadow-sm border border-green-300">
-            <div class="flex items-center space-x-3 mb-6">
-              <div class="w-12 h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center flex-shrink-0">
-                <span class="material-symbols-outlined">emoji_events</span>
-              </div>
-              <div>
-                <h4 class="text-lg font-bold text-primary font-headline">¡Simulador completado!</h4>
-                <p class="text-xs text-on-surface-variant font-body">Has completado todas las fases exitosamente.</p>
-              </div>
-            </div>
-
-            <div class="bg-surface rounded-xl p-6 border border-outline-variant/10">
-              <p class="text-on-surface text-sm leading-relaxed font-body mb-4">
-                Felicitaciones, has finalizado el simulador de toma de decisiones. Tu puntaje ha sido registrado.
-              </p>
-              <button routerLink="/formulario"
-                class="bg-primary text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-primary/90 active:scale-[0.98] transition-all shadow-lg flex items-center space-x-2 font-headline">
-                <span>Volver al Dashboard</span>
-                <span class="material-symbols-outlined">home</span>
               </button>
             </div>
           </div>

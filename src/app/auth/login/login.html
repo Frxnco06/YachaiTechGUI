@@ -29,12 +29,21 @@
     <div class="flex-grow flex flex-col items-center justify-center px-8 md:px-16 py-12">
 
       <div class="w-full max-w-[440px] animate-fade-in">
-        <div class="mb-10 text-left">
-          <h3 class="text-3xl font-bold text-primary mb-2 font-headline">Iniciar Sesión en Yachay-Pro</h3>
-          <p class="text-on-surface-variant text-sm font-body">Ingrese sus credenciales para acceder al panel ejecutivo.
-          </p>
-        </div>
+<div class="text-center space-y-4 mb-8">
+  <h2 class="text-3xl font-extrabold text-[#001a33] tracking-tight">
+    Iniciar Sesión en Yachay-Pro
+  </h2>
 
+  <div class="inline-flex items-center justify-center space-x-2 px-4 py-2 bg-slate-50 border border-slate-200 rounded-full mx-auto">
+    <p class="text-slate-600 text-[10px] font-black uppercase tracking-widest">
+      Solo pueden ingresar alumnos de <span class="text-[#001a33]">Cibertec</span>
+    </p>
+  </div>
+  
+  <p class="text-slate-400 text-sm mt-4">
+    Ingrese sus credenciales para acceder al panel ejecutivo.
+  </p>
+</div>
         <form class="space-y-6" [formGroup]="loginForm" (ngSubmit)="iniciarSesion()">
           <div class="space-y-2">
             <label
@@ -81,15 +90,15 @@
 
           <div class="text-center mt-6">
             <p class="text-sm text-on-surface-variant font-body">
-              ¿Aún no tienes una cuenta? 
-              <a routerLink="/register" class="font-bold text-secondary hover:opacity-80 transition-opacity">Regístrate aquí</a>
+              ¿Aún no tienes una cuenta?
+              <a routerLink="/register" class="font-bold text-secondary hover:opacity-80 transition-opacity">Regístrate
+                aquí</a>
             </p>
           </div>
 
         </form>
       </div>
     </div>
-
     <footer class="p-8 flex justify-center space-x-8 mt-auto border-t border-outline-variant/10">
       <a class="text-[10px] font-label font-bold uppercase tracking-widest text-on-surface-variant hover:text-secondary transition-colors"
         href="#">PRIVACY POLICY</a>

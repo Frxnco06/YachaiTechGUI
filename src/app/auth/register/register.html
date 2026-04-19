@@ -30,15 +30,27 @@
 
       <div class="w-full max-w-[440px] animate-fade-in">
 
-        <div class="mb-10 text-left">
-          <h3 class="text-3xl font-bold text-primary mb-2 font-headline">Registro en Yachay-Pro</h3>
-          <p class="text-on-surface-variant font-body text-sm">Ingrese sus credenciales para registrarse.</p>
+        <div class="text-center space-y-4 mb-8">
+          <h2 class="text-3xl font-extrabold text-[#001a33] tracking-tight">
+            Iniciar Sesión en Yachay-Pro
+          </h2>
+            <div class="inline-flex items-center justify-center space-x-2 px-4 py-2 bg-slate-50 border border-slate-200 rounded-full mx-auto">
+    <p class="text-slate-600 text-[10px] font-black uppercase tracking-widest">
+      Registrate con tu correo de <span class="text-[#001a33]">Cibertec</span>
+    </p>
+  </div>
+
+
+          <p class="text-slate-400 text-sm mt-4">
+            Ingrese sus credenciales para acceder al panel ejecutivo.
+          </p>
         </div>
 
         <form class="space-y-5" [formGroup]="registerForm" (ngSubmit)="registrarUsuario()">
 
           <div class="space-y-2">
-            <label class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">NOMBRES</label>
+            <label
+              class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">NOMBRES</label>
             <input formControlName="nombres"
               class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 px-4 outline-none transition-all font-body placeholder:text-outline-variant/50"
               [ngClass]="{'border-red-400 focus:border-red-500 focus:ring-red-500': errors['nombres']}"
@@ -48,7 +60,9 @@
 
           <div class="grid grid-cols-2 gap-4">
             <div class="space-y-2">
-              <label class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">APELLIDO PATERNO</label>
+              <label
+                class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">APELLIDO
+                PATERNO</label>
               <input formControlName="apepa"
                 class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 px-4 outline-none transition-all font-body placeholder:text-outline-variant/50"
                 [ngClass]="{'border-red-400 focus:border-red-500 focus:ring-red-500': errors['apepa']}"
@@ -56,7 +70,9 @@
               <p *ngIf="errors['apepa']" class="text-xs text-red-500 font-body mt-1">{{ errors['apepa'] }}</p>
             </div>
             <div class="space-y-2">
-              <label class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">APELLIDO MATERNO</label>
+              <label
+                class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">APELLIDO
+                MATERNO</label>
               <input formControlName="apema"
                 class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 px-4 outline-none transition-all font-body placeholder:text-outline-variant/50"
                 [ngClass]="{'border-red-400 focus:border-red-500 focus:ring-red-500': errors['apema']}"
@@ -66,18 +82,22 @@
           </div>
 
           <div class="space-y-2">
-            <label class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">CORREO CORPORATIVO</label>
+            <label
+              class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">CORREO
+              CORPORATIVO</label>
             <input formControlName="correo"
               class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 px-4 outline-none transition-all font-body placeholder:text-outline-variant/50"
               [ngClass]="{'border-red-400 focus:border-red-500 focus:ring-red-500': errors['correo']}"
-              placeholder="example@gmail.com" type="email">
+              placeholder="i202332892@cibertec.edu.pe">
             <p *ngIf="errors['correo']" class="text-xs text-red-500 font-body mt-1">{{ errors['correo'] }}</p>
           </div>
 
           <div class="space-y-2">
-            <label class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">CONTRASEÑA</label>
+            <label
+              class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">CONTRASEÑA</label>
             <div class="relative group">
-              <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline/60 group-focus-within:text-secondary transition-colors text-[20px]">lock</span>
+              <span
+                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline/60 group-focus-within:text-secondary transition-colors text-[20px]">lock</span>
               <input formControlName="contrasena"
                 class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 pl-12 pr-4 outline-none transition-all font-body placeholder:text-outline-variant/50"
                 [ngClass]="{'border-red-400 focus:border-red-500 focus:ring-red-500': errors['contrasena']}"
@@ -87,15 +107,19 @@
           </div>
 
           <div class="space-y-2">
-            <label class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">CONFIRMAR CONTRASEÑA</label>
+            <label
+              class="block font-label text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">CONFIRMAR
+              CONTRASEÑA</label>
             <div class="relative group">
-              <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline/60 group-focus-within:text-secondary transition-colors text-[20px]">lock</span>
+              <span
+                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline/60 group-focus-within:text-secondary transition-colors text-[20px]">lock</span>
               <input formControlName="confirmarContrasena"
                 class="w-full bg-white border border-outline-variant/40 focus:border-secondary focus:ring-1 focus:ring-secondary rounded-lg py-3.5 pl-12 pr-4 outline-none transition-all font-body placeholder:text-outline-variant/50"
                 [ngClass]="{'border-red-400 focus:border-red-500 focus:ring-red-500': errors['confirmarContrasena']}"
                 placeholder="••••••••" type="password">
             </div>
-            <p *ngIf="errors['confirmarContrasena']" class="text-xs text-red-500 font-body mt-1">{{ errors['confirmarContrasena'] }}</p>
+            <p *ngIf="errors['confirmarContrasena']" class="text-xs text-red-500 font-body mt-1">{{
+              errors['confirmarContrasena'] }}</p>
           </div>
 
           <button [disabled]="isSubmitting"
@@ -111,7 +135,8 @@
           <div class="text-center pt-4">
             <p class="text-on-surface-variant text-sm font-medium font-body">
               ¿Ya tienes una cuenta?
-              <a routerLink="/login" class="text-secondary font-bold hover:underline underline-offset-4 cursor-pointer">Ingresar ahora</a>
+              <a routerLink="/login"
+                class="text-secondary font-bold hover:underline underline-offset-4 cursor-pointer">Ingresar ahora</a>
             </p>
           </div>
         </form>

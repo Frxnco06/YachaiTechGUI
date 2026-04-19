@@ -24,6 +24,7 @@ export class FaseAlternativasComponent implements OnInit {
   bloqueado = false;
   simuladorCompletado = false;
 
+
   constructor(
     private simuladorService: SimuladorService,
     private authService: AuthService,
@@ -31,7 +32,7 @@ export class FaseAlternativasComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -45,15 +46,13 @@ export class FaseAlternativasComponent implements OnInit {
 
     this.simuladorService.crearSesion().subscribe({
       next: (sesion) => {
-        console.log('✅ Sesión iniciada:', sesion);
         this.sesion = sesion;
         this.cargarAlternativas();
       },
       error: (err) => {
-        console.error('❌ Error al iniciar sesión:', err);
         this.isLoading = false;
+        this.notificationService.error('Error', 'No se pudo iniciar la sesión.');
         this.cdr.detectChanges();
-        this.notificationService.error('Error', 'No se pudo iniciar la sesión del simulador.');
       }
     });
   }
@@ -68,16 +67,15 @@ export class FaseAlternativasComponent implements OnInit {
           const j = Math.floor(Math.random() * (i + 1));
           [alternativas[i], alternativas[j]] = [alternativas[j], alternativas[i]];
         }
-        
+
         this.alternativas = alternativas;
         this.isLoading = false;
         this.cdr.detectChanges();
       },
       error: (err) => {
-        console.error('❌ Error al cargar alternativas:', err);
         this.isLoading = false;
-        this.cdr.detectChanges();
         this.notificationService.error('Error', 'No se pudieron cargar las alternativas.');
+        this.cdr.detectChanges();
       }
     });
   }
@@ -92,7 +90,16 @@ export class FaseAlternativasComponent implements OnInit {
     }
     this.cdr.detectChanges();
   }
+  toggleAlternativaStatic(id: number): void {
+    if (this.bloqueado || this.isSubmitting) return;
 
+    if (this.alternativasSeleccionadas.has(id)) {
+      this.alternativasSeleccionadas.delete(id);
+    } else {
+      this.alternativasSeleccionadas.add(id);
+    }
+    this.cdr.detectChanges();
+  }
   enviarDecisiones(): void {
     if (this.bloqueado || this.isSubmitting || !this.sesion || this.alternativasSeleccionadas.size === 0) return;
 
@@ -117,7 +124,6 @@ export class FaseAlternativasComponent implements OnInit {
         this.cdr.detectChanges();
       },
       error: (err) => {
-        console.error('❌ Error al registrar decisiones:', err);
         this.isSubmitting = false;
         this.alternativasSeleccionadas.clear();
         this.cdr.detectChanges();
