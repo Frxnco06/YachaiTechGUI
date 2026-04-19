@@ -1,0 +1,1248 @@
+﻿
+
+Tecnolog├¡a que incluye
+
+Objetivos de la simulaci├│n
+Analizar el proceso de decisi├│n de 
+compra del consumidor como un 
+sistema din├ímico influenciado por 
+VPD identificando las necesidades 
+funcionales, emocionales, sociales 
+y de experiencia del cliente.
+Aplicar conceptos fundamentales 
+del comportamiento del cliente 
+para diagnosticar barreras de 
+compra y proponer acciones 
+estrat├®gicas de marketing.
+Desarrollar pensamiento cr├¡tico y 
+capacidad de toma de decisiones 
+estrat├®gicas considerando las 
+consecuencias sobre la percepci├│n 
+de marca y el cierre de ventas.
+
+Ruta de la simulaci├│n
+Inicia con un escenario enfocado a 
+una problem├ítica puntual que est├í 
+enfrentando la empresa a raz├│n de un 
+nuevo producto que no logra las 
+ventas deseadas.
+El estudiante asume el rol de un 
+consultor de marketing donde tendr├í 
+que aplicar distintos instrumentos de 
+investigaci├│n para analizar los 
+est├¡mulos a los que se enfrenta el 
+cliente, cu├íl es el proceso que sigue 
+en la toma de decisiones y sus 
+actitudes y creencias frente a este 
+nuevo producto.
+No existe un camino equivocado, lo 
+que existe son resultados distintos en 
+funci├│n a lo estrat├®gico de sus 
+decisiones que le permitir├ín al 
+estudiante comprender el 
+comportamiento del cliente. La 
+diferencia entre cada resultado es la 
+profundidad de informaci├│n que 
+ofrece cada instrumento.
+Al finalizar, el usuario recibir├í una 
+respuesta de la empresa de acuerdo al 
+desempe├▒o alcanzado.
+
+Contexto y primera fase
+INFORMACI├ôN 
+DE LA EMPRESA
+INFORMACI├ôN 
+DEL PRODUCTO
+SITUACI├ôN DEL 
+MERCADO
+Definici├│n del rol 
+y tarea que 
+realizar├í el 
+usuario
+1ra FASE: 
+Escenario de 
+crisis
+An├ílisis A
+An├ílisis B
+An├ílisis C
+Instrumento A1
+Instrumento A2
+Instrumento A3
+Instrumento B1
+Instrumento B2
+Instrumento B3
+Instrumento C1
+Instrumento C2
+Instrumento C3
+Resultado y Feedback A1
+Resultado y Feedback A2
+Resultado y Feedback A3
+Resultado y Feedback B1
+Resultado y Feedback B2
+Resultado y Feedback B3
+Resultado y Feedback C1
+Resultado y Feedback C2
+Resultado y Feedback C3
+NOTA: El usuario debe realizar los tres 
+an├ílisis y en cada uno debe aplicar un 
+instrumento para obtener los tres 
+resultados que necesita para continuar
+2da FASE: 
+Identificaci├│n 
+del Buyer 
+Persona - Hijo
+
+Segunda fase
+2da FASE: 
+Identificaci├│n 
+del Buyer 
+Persona
+Buyer Persona - 
+Hijo
+Buyer Persona -
+Padre
+Buyer Persona - H1
+Buyer Persona ÔÇô H2
+Buyer Persona ÔÇô H3
+Buyer Persona - P1
+Buyer Persona ÔÇô P2
+Buyer Persona ÔÇô P3
+Feedback H1
+Feedback H2
+Feedback H3
+Feedback P1
+Feedback P2
+Feedback P3
+NOTA: El usuario puede elegir con cual Buyer Persona iniciar, 
+al recibir el feedback por el perfil elegido debe de dirigirse 
+al Buyer Persona que dejo pendiente y elegir un perfil
+Resumen de 
+los perfiles 
+identificados 
+(H y P)
+Buyer Persona ÔÇô H4Feedback H4
+Buyer Persona ÔÇô P4Feedback P4
+3ra FASE: 
+Determinaci├│n 
+del 
+posicionamiento
+
+Tercera fase
+Eje Precio vs. 
+Calidad
+Eje Innovaci├│n 
+vs. Dise├▒o 
+Insight PC1
+Insight PC2
+Insight PC3
+Insight ID1
+Insight ID2
+Insight ID3
+Feedback PC1
+Feedback PC2
+Feedback PC3
+Feedback ID1
+Feedback ID2
+Feedback ID3
+NOTA: El usuario puede elegir iniciar con cualquier eje y elegir el insight 
+m├ís adecuado para atraer el inter├®s de los Buyer Persona que ha definido. 
+Cada decisi├│n se debe de graficar sumativamente en un diagrama
+Representaci├│n 
+en el cuadrante
+3ra FASE: 
+Determinaci├│n 
+del 
+posicionamiento
+Eje Prestigio vs. 
+Experiencia
+Insight PE1
+Insight PE2
+Insight PE3
+Feedback PE1
+Feedback PE2
+Feedback PE3
+Representaci├│n 
+en el cuadrante
+Representaci├│n 
+en el cuadrante
+FASE FINAL: 
+Informe final y 
+respuesta de la 
+empresa
+
+Fase final
+El usuario recibir├í un informe final de las decisiones que ha tomado acompa├▒ado de un feedback que le 
+permitir├í identificar los detalles que ha omitido o no ha tomado en cuenta durante la simulaci├│n
+FASE FINAL: 
+Informe final y 
+respuesta de la 
+empresa
+Informe final de 
+las decisiones 
+del usuario
+Feedback 
+positivo emitido 
+por el simulador 
+y puntaje 
+obtenido
+Respuesta de la 
+empresa frente a la 
+labor del consultor de 
+marketing (usuario)
+NOTA: El usuario 
+puede descargar su 
+informe final en 
+formato PDF
+Solicitud: Ver la posibilidad de 
+incorporar una IA que converse con el 
+usuario para ayudarlo a reflexionar 
+sobre sus decisiones a partir del 
+informe final y el pedido de la empresa
+
+Requerimientos de uso
+El usuario (estudiante) debe de registrarse con su correo institucional (@cibertec.edu.pe), no debe permitir correos personales, 
+y registrar un password de seguridad para que pueda retomar la simulaci├│n si lo necesita.
+Deben existir dos roles de registro administrativo: ADMINISTRADOR, quien tendr├í el control y acceso total de la plataforma, y 
+DOCENTE, quien podr├í revisar y descargar el desempe├▒o de los usuarios.
+Los usuarios deben tener la opci├│n de guardar sus decisiones y continuar luego, previo login, esto no le debe permitir cambiar 
+sus decisiones, sino m├ís bien revisarlas y continuarlas. Una vez que recibe su informe final podr├í retroceder en la plataforma sin 
+opci├│n a cambio de decisiones.
+Las decisiones se presentar├ín de manera desordenada, de manera que el estudiante no aplique un patr├│n de decisiones a 
+seguir.
+La respuesta de la empresa debe presentarse en una imagen descargable para que el usuario la pueda compartir en sus redes 
+sociales.
+
+Inicio de la simulaci├│n
+
+INFORMACI├ôN DE LA EMPRESA
+YACHAY ÔÇô TECH, fundada en 2023 por un grupo de ingenieros y especialistas en educaci├│n, nace con la misi├│n 
+de "Cerrar la brecha digital en el Per├║ con tecnolog├¡a soberana", tras observar que las grandes marcas globales 
+no dise├▒an productos pensando en la accidentada geograf├¡a peruana o en la econom├¡a de las familias de 
+provincias. 
+Su nombre proviene del quechua Yachay (Saber/Aprender) y buscar transmitir esa esencia tecnol├│gica con 
+inclusi├│n digital para todos los peruanos. 
+INFORMACI├ôN DEL PRODUCTO
+En el ├║ltimo a├▒o han lanzado al mercado una Tablet bajo la marca "KallpaÔÇ£.
+ÔÇóEspecificaciones T├®cnicas: Procesador de alto rendimiento para multitarea, bater├¡a de larga duraci├│n (ideal 
+para zonas con cortes de energ├¡a) y pantalla con filtro de luz azul para lectura prolongada.
+ÔÇóValor Agregado: Incluye "Yachay-Hub", una plataforma preinstalada con contenido educativo del Ministerio 
+de Educaci├│n (MINEDU) que funciona sin conexi├│n a internet.
+ÔÇóPrecio: S/ 850.00, un 40% m├ís econ├│mica que una marca de alta gama.
+Informaci├│n de la simulaci├│n
+
+SITUACI├ôN DEL MERCADO
+ÔÇóEl Cliente: Estudiantes de institutos y universidades en regiones como Cusco, Huancayo y 
+Arequipa. Son j├│venes de 17 a 25 a├▒os (Generaci├│n Z) que buscan independencia, pero cuya 
+compra suele ser financiada o aprobada por sus padres (Generaci├│n X).
+ÔÇóEl Problema: Aunque el producto es superior en software local, el consumidor peruano tiene una 
+fuerte creencia que la tecnolog├¡a local es "ensamblada y de corta vida". Prefieren pagar m├ís por 
+una marca coreana o estadounidense solo por el "estatus" y la percepci├│n de seguridad.
+ÔÇóCanales de Venta: Tienda online propia, presencia en "marketplaces" como Falabella y peque├▒as 
+tiendas tecnol├│gicas en centros comerciales regionales.
+ROL DEL ESTUDIANTE
+Deber├í asumir el rol de consultor de marketing frente a la empresa Yachay-Te c h, con el objetivo de 
+analizar y comprender el proceso de decisi├│n de compra del cliente peruano.
+Regla clave:  No existen decisiones ÔÇ£incorrectasÔÇØ. Cada elecci├│n abre un camino con consecuencias 
+diferentes que impactar├ín en la toma de decisiones al momento de implementar acciones 
+estrat├®gicas.
+
+Yachay-Te c h ha detectado que, aunque hay 
+mucho tr├ífico en su web, las ventas de su tablet 
+"Kallpa" se detienen en el carrito de compras.
+En este momento usted debe decidir cu├íl ser├í la 
+ruta de acci├│n para identificar los stoppers que no 
+permiten concluir la compra del producto:
+An├ílisis de Est├¡mulos 
+An├ílisis de la Toma de 
+Decisiones 
+An├ílisis de Actitudes y 
+Creencias 
+1ra FASE: El escenario de crisis
+
+AN├üLISIS A: An├ílisis de 
+Est├¡mulos
+Excelente, has decidido 
+iniciar con un enfoque 
+sensorial y de motivaci├│n, 
+donde el foco de la 
+investigaci├│n se desplaza 
+hacia c├│mo los est├¡mulos 
+f├¡sicos y las necesidades 
+psicol├│gicas de seguridad y 
+autorrealizaci├│n afectan el 
+comportamiento.
+En este punto tienes tres 
+instrumentos de 
+investigaci├│n que podr├¡as 
+aplicar para identificar los 
+stoppers en esta ruta: 
+Auditor├¡a de Contenido 
+Multimedia y UX 
+(+0.5)  ┬íExcelente elecci├│n! 
+Est├ís aplicando el concepto 
+de sensaciones al entorno 
+digital. Revisar c├│mo el 
+cliente percibe visualmente 
+la tablet es fundamental 
+para un negocio que opera 
+con un cliente digitalizado.
+Veamos que resultados 
+obtienes 
+Resultados de la Auditor├¡a 
+de Contenido Multimedia y 
+UX:
+Existe falla sensorial, las 
+fotos en la web son 
+est├íticas y no muestran la 
+fluidez del procesador en 
+multitarea, lo que impide 
+que el cliente genere una 
+sensaci├│n de velocidad.
+El contenido educativo de 
+"Yachay-Hub" est├í 
+"escondido" en una 
+pesta├▒a secundaria, lo que 
+dificukta que el estudiante 
+perciba de inmediato c├│mo 
+la tablet le ayudar├í a 
+mejorar sus notas.
+Has identificado que el 
+entorno digital no est├í 
+estimulando los sentidos 
+del cliente.
+Realiza un nuevo an├ílisis 
+An├ílisis B 
+An├ílisis C 
+Test de Producto en Puntos 
+de Venta (Pop-up Stores) 
+Prueba de Rendimiento 
+Cr├¡tico de Yachay-Hub 
+
+AN├üLISIS A: An├ílisis de 
+Est├¡mulos
+Excelente, has decidido 
+iniciar con un enfoque 
+sensorial y de motivaci├│n, 
+donde el foco de la 
+investigaci├│n se desplaza 
+hacia c├│mo los est├¡mulos 
+f├¡sicos y las necesidades 
+psicol├│gicas de seguridad 
+y autorrealizaci├│n afectan 
+el comportamiento.
+En este punto tienes tres 
+instrumentos de 
+investigaci├│n que podr├¡as 
+aplicar para identificar los 
+stoppers en esta ruta: 
+Auditor├¡a de Contenido 
+Multimedia y UX 
+Test de Producto en Puntos 
+de Venta (Pop-up Stores) 
+(+1) ┬íMuy bien pensado! Al 
+permitir el contacto f├¡sico, 
+est├ís activando el canal 
+sensorial completo del 
+cliente. Esto es vital para 
+romper la creencia de que 
+la tecnolog├¡a local es de 
+'baja calidad', permitiendo 
+que la percepci├│n se base 
+en la experiencia real y no 
+en prejuicios; sin embargo, 
+los datos que recojas 
+pueden estar sesgados por 
+parte de quien aplique el 
+test.
+Veamos que resultados 
+obtienes 
+Resultado del Test de 
+Producto en Puntos de Venta 
+(Pop-up Stores):
+El 85% de los padres se 
+sorprendi├│ positivamente al 
+tocar el aluminio reforzado, ya 
+que esperaban pl├ístico 
+barato debido al precio bajo. 
+Algunos usuarios reportaron 
+que el brillo de la pantalla en 
+exteriores (plazas principales) 
+es insuficiente, lo que afecta 
+la sensaci├│n de utilidad en el 
+campo. 
+Se observ├│ que los padres 
+solo se acercan al m├│dulo si 
+ven a otros padres probando 
+el equipo primero. 
+Has descubierto que el 
+contacto f├¡sico rompe la 
+creencia negativa de 'mala 
+calidadÔÇÖ.
+Realiza un nuevo an├ílisis 
+An├ílisis B 
+An├ílisis C 
+Prueba de Rendimiento 
+Cr├¡tico de Yachay-Hub 
+
+AN├üLISIS A: An├ílisis de 
+Est├¡mulos
+Excelente, has decidido 
+iniciar con un enfoque 
+sensorial y de motivaci├│n, 
+donde el foco de la 
+investigaci├│n se desplaza 
+hacia c├│mo los est├¡mulos 
+f├¡sicos y las necesidades 
+psicol├│gicas de seguridad y 
+autorrealizaci├│n afectan el 
+comportamiento.
+En este punto tienes tres 
+instrumentos de 
+investigaci├│n que podr├¡as 
+aplicar para identificar los 
+stoppers en esta ruta: 
+Auditor├¡a de Contenido 
+Multimedia y UX 
+Test de Producto en Puntos 
+de Venta (Pop-up Stores) 
+Prueba de Rendimiento 
+Cr├¡tico de Yachay-Hub 
+(+2) ┬íDecisi├│n estrat├®gica 
+superior! Has seleccionado 
+una herramienta que 
+analiza profundamente la 
+motivaci├│n del cliente. Al 
+demostrar el valor de 
+'Yachay-Hub' sin conexi├│n y 
+la durabilidad de la bater├¡a 
+en condiciones reales, est├ís 
+atacando directamente la 
+necesidad psicol├│gica de 
+seguridad que el padre de 
+familia peruano exige para 
+aprobar la compra.
+Veamos que resultados 
+obtienes 
+Resultado de la Prueba de 
+Rendimiento Cr├¡tico de 
+Yachay-Hub
+Al ver la tablet caer desde 1 
+metro sin sufrir da├▒os, el 
+nivel de estr├®s de los 
+padres baj├│ dr├ísticamente 
+y su intenci├│n de compra 
+subi├│ un 60%.
+El uso de "Yachay-Hub" sin 
+internet gener├│ una 
+sensaci├│n de "alivio" y 
+"empoderamiento" en 
+estudiantes de zonas 
+rurales, quienes lo ven 
+como su ├║nica oportunidad 
+de competir con alumnos 
+de Lima.
+Se descubri├│ que el miedo 
+al "robo" (falta de 
+seguridad f├¡sica en la calle) 
+pesa m├ís que el miedo a 
+que el equipo se malogre.
+Has llegado a la ra├¡z, la 
+motivaci├│n de seguridad 
+no es solo t├®cnica, es 
+tambi├®n contextual (el 
+entorno peruano). Ahora 
+sabes que, para vender, 
+debes ofrecer tranquilidad 
+total.
+Realiza un nuevo an├ílisis 
+An├ílisis B 
+An├ílisis C 
+
+AN├üLISIS B: An├ílisis de la 
+Toma de Decisiones
+┬íGenial! En el contexto 
+peruano, esto es vital 
+porque la compra de 
+tecnolog├¡a no es una 
+decisi├│n aislada, sino que 
+est├í fuertemente mediada 
+por la familia, el grupo de 
+pares (compa├▒eros de 
+estudio) y los l├¡deres de 
+opini├│n.
+En este punto tienes tres 
+instrumentos de 
+investigaci├│n que podr├¡as 
+aplicar para identificar los 
+stoppers en esta ruta: 
+Encuesta de Referidos y 
+canales de informaci├│n 
+(+0.5)  ┬íBuen trabajo! Has 
+elegido una herramienta 
+eficiente para mapear las 
+influencias externas 
+cuantitativamente. 
+Identificar si el cliente llega 
+por una red social o por 
+recomendaci├│n de un 
+amigo es el primer paso 
+para entender el entorno 
+del consumidor.
+Veamos que resultados 
+obtienes 
+Resultados de la Encuesta 
+de Referidos y Canales de 
+Informaci├│n:
+El 65% de los clientes lleg├│ 
+por un video de TikTok, 
+pero el 80% solo compr├│ 
+tras consultar a un "amigo 
+que sabe de tecnolog├¡a". El 
+40% de los padres 
+mencion├│ que "el precio le 
+hac├¡a dudar" hasta que 
+alguien de su confianza le 
+dio el visto bueno.
+Se ha identificado la falta 
+de una figura de autoridad 
+t├®cnica local que valide la 
+marca masivamente.
+La informaci├│n es ├║til para 
+detectar tendencias. Te da 
+el qu├® (la recomendaci├│n 
+es clave), pero no el c├│mo.
+Realiza un nuevo an├ílisis 
+An├ílisis A 
+An├ílisis C 
+Etnograf├¡a Digital en 
+Comunidades Universitarias 
+Shadowing y Entrevista en 
+el "Punto de Decisi├│n" 
+(Tienda F├¡sica) 
+
+AN├üLISIS B: An├ílisis de la 
+Toma de Decisiones
+┬íGenial! En el contexto 
+peruano, esto es vital 
+porque la compra de 
+tecnolog├¡a no es una 
+decisi├│n aislada, sino que 
+est├í fuertemente mediada 
+por la familia, el grupo de 
+pares (compa├▒eros de 
+estudio) y los l├¡deres de 
+opini├│n.
+En este punto tienes tres 
+instrumentos de 
+investigaci├│n que podr├¡as 
+aplicar para identificar los 
+stoppers en esta ruta: 
+Encuesta de Referidos y 
+canales de informaci├│n 
+Etnograf├¡a Digital en 
+Comunidades 
+Universitarias 
+(+1) ┬íExcelente enfoque! Al 
+observar el 
+comportamiento en su 
+entorno natural, est├ís 
+analizando los factores 
+sociales y los grupos de 
+referencia de la 
+Generaci├│n Z. Este 
+instrumento te permite ver 
+la influencia de los pares 
+en tiempo real, algo crucial 
+para productos 
+tecnol├│gicos.
+Veamos que resultados 
+obtienes 
+Resultado de la Etnograf├¡a 
+Digital en Comunidades 
+Universitarias:
+En los grupos de WhatsApp 
+de estudiantes, se descubri├│ 
+que Yachay-Te c h es vista 
+como "la tablet para estudiar", 
+pero se recomienda una 
+marca global para "lucirse en 
+la facultad". Existe un l├¡der de 
+opini├│n (el delegado o el 
+alumno m├ís aplicado) que 
+tiene el poder de validar o 
+destruir la reputaci├│n de la 
+tablet con un solo comentario.
+El factor social del estatus y la 
+presi├│n de grupo que asocia 
+"lo peruano" con algo 
+funcional pero no 
+aspiracional.
+Al observar sin intervenir, has 
+captado la 'jerga' y el 
+sentimiento real de la 
+Generaci├│n Z. Posees datos 
+cualitativos potentes sobre el 
+factor social.
+Realiza un nuevo an├ílisis 
+An├ílisis A 
+An├ílisis C 
+Shadowing y Entrevista en 
+el "Punto de Decisi├│n" 
+(Tienda F├¡sica) 
+
+AN├üLISIS B: An├ílisis de la 
+Toma de Decisiones
+┬íGenial! En el contexto 
+peruano, esto es vital 
+porque la compra de 
+tecnolog├¡a no es una 
+decisi├│n aislada, sino que 
+est├í fuertemente mediada 
+por la familia, el grupo de 
+pares (compa├▒eros de 
+estudio) y los l├¡deres de 
+opini├│n.
+En este punto tienes tres 
+instrumentos de 
+investigaci├│n que podr├¡as 
+aplicar para identificar los 
+stoppers en esta ruta: 
+Encuesta de Referidos y 
+canales de informaci├│n 
+Etnograf├¡a Digital en 
+Comunidades 
+Universitarias 
+Shadowing y Entrevista en 
+el "Punto de Decisi├│n" 
+(Tienda F├¡sica) 
+(+2) ┬íDecisi├│n estrat├®gica 
+sobresaliente! Has 
+seleccionado el 
+instrumento m├ís profundo 
+para este camino. Al 
+observar la din├ímica real 
+entre el decisor y el 
+influyente (padre-hijo), 
+puedes identificar 
+exactamente en qu├® etapa 
+de la toma de decisiones 
+surge el conflicto. Este 
+m├®todo revela las 
+jerarqu├¡as familiares y las 
+presiones del entorno que 
+las encuestas suelen omitir.
+Veamos que resultados 
+obtienes 
+Resultado del Shadowing y 
+Entrevista en el "Punto de 
+Decisi├│n" (Tienda F├¡sica):
+Se observ├│ que el hijo 
+convence al padre en el pasillo 
+usando argumentos de "tareas 
+y software", pero al momento 
+de sacar la tarjeta, el padre se 
+detiene, mira las marcas 
+globales vecinas y le pregunta 
+al vendedor: "┬┐Cu├íl me 
+recomienda usted?". Si el 
+vendedor duda o no conoce 
+Yachay-Te c h, el padre aborta la 
+compra inmediatamente por 
+falta de seguridad.
+El vendedor como influyente 
+cr├¡tico y la inseguridad del 
+padre en la etapa final del 
+proceso de toma de 
+decisiones.
+La informaci├│n es de alt├¡sima 
+calidad y estrat├®gica. Has 
+presenciado el momento 
+exacto del quiebre (la 'hora de 
+la verdad'). Tienes evidencia 
+directa de c├│mo interact├║an las 
+influencias internas (el deseo 
+del hijo) con las influencias 
+externas (el vendedor y el 
+entorno de la tienda).
+Realiza un nuevo an├ílisis 
+An├ílisis A 
+An├ílisis B 
+
+AN├üLISIS C: An├ílisis de 
+Actitudes y Creencias
+Excelente, has decidido 
+iniciar con el an├ílisis de las 
+actitudes y creencias, que 
+son barreras cr├¡ticas en el 
+mercado tecnol├│gico 
+peruano para marcas 
+emergentes como Yachay-
+Te c h.
+En este punto tienes tres 
+instrumentos de 
+investigaci├│n que podr├¡as 
+aplicar para identificar los 
+stoppers en esta ruta: 
+Encuesta Digital Est├índar 
+(Post-Abandono) 
+(+0.5) ┬íBuena idea! Has 
+elegido una herramienta 
+que te permite obtener 
+datos cuantitativos 
+r├ípidamente y a bajo costo. 
+Es un paso valioso para 
+identificar tendencias 
+generales en el 
+comportamiento del cliente 
+digitalizado; sin embargo, 
+no podr├ís profundizar lo 
+suficiente en las creencias 
+subyacentes que el cliente 
+no siempre expresa en una 
+respuesta de 's├¡' o 'no'.
+Veamos que resultados 
+obtienes 
+Resultados de la Encuesta 
+Digital Est├índar (Post-
+Abandono):
+El 55% de los encuestados 
+marc├│ la opci├│n 
+"Desconfianza en la 
+durabilidad del hardware".
+El 80% considera que el 
+precio de S/ 850.00 es 
+"muy bueno", pero el 40% 
+teme que lo barato 
+signifique mala calidad.
+El 70% de los usuarios 
+digitales no sab├¡a que la 
+tablet incluye contenido del 
+MINEDU que funciona sin 
+internet.
+ Has obtenido datos fr├¡os. 
+Sabes qu├® est├í pasando 
+(miedo a la durabilidad), 
+pero no sabes el porqu├®.
+Realiza un nuevo an├ílisis 
+An├ílisis A 
+An├ílisis B 
+Entrevistas a Profundidad 
+con el "Comprador Dual" 
+Focus Group de 
+"Asociaci├│n Impl├¡cita y 
+Proyectiva" 
+
+AN├üLISIS C: An├ílisis de 
+Actitudes y Creencias
+Excelente, has decidido 
+iniciar con el an├ílisis de las 
+actitudes y creencias, que 
+son barreras cr├¡ticas en el 
+mercado tecnol├│gico 
+peruano para marcas 
+emergentes como Yachay-
+Te c h.
+En este punto tienes tres 
+instrumentos de 
+investigaci├│n que podr├¡as 
+aplicar para identificar los 
+stoppers en esta ruta: 
+Encuesta Digital Est├índar 
+(Post-Abandono) 
+Entrevistas a Profundidad 
+con el "Comprador Dual" 
+(+1) ┬íExcelente enfoque! Al 
+incluir a ambos actores, 
+est├ís reconociendo las 
+influencias en la toma de 
+decisiones. Est├ís logrando 
+captar matices 
+emocionales y 
+motivaciones de seguridad 
+que una encuesta 
+ignorar├¡a; sin embargo, 
+requiere mucho tiempo de 
+an├ílisis y los resultados son 
+dif├¡ciles de generalizar a 
+toda la base de clientes de 
+Yachay-Te c h.
+Veamos que resultados 
+obtienes 
+Resultado de la Entrevistas a 
+Profundidad con el 
+"Comprador Dual":
+El Hijo (Gen Z): Tiene una 
+actitud positiva hacia el 
+software "Yachay-Hub", pero 
+siente que la tablet no tiene 
+"onda" o estatus frente a sus 
+compa├▒eros.
+El Padre (Gen X): Es el 
+principal stopper. Su creencia 
+est├í basada en experiencias 
+pasadas negativas con marcas 
+ensambladas en Per├║. Solo 
+comprar├¡a si hubiera una 
+garant├¡a f├¡sica cerca de su 
+casa.
+La etapa de "Evaluaci├│n de 
+alternativas" se bloquea 
+porque el padre prioriza la 
+motivaci├│n de seguridad 
+(durabilidad) mientras el hijo 
+busca autorrealizaci├│n 
+(estudio).
+Realiza un nuevo an├ílisis 
+An├ílisis A 
+An├ílisis B 
+Focus Group de 
+"Asociaci├│n Impl├¡cita y 
+Proyectiva" 
+
+AN├üLISIS C: An├ílisis de 
+Actitudes y Creencias
+Excelente, has decidido 
+iniciar con el an├ílisis de las 
+actitudes y creencias, que 
+son barreras cr├¡ticas en el 
+mercado tecnol├│gico 
+peruano para marcas 
+emergentes como Yachay-
+Te c h.
+En este punto tienes tres 
+instrumentos de 
+investigaci├│n que podr├¡as 
+aplicar para identificar los 
+stoppers en esta ruta: 
+Encuesta Digital Est├índar 
+(Post-Abandono) 
+Entrevistas a Profundidad 
+con el "Comprador Dual" 
+Focus Group de 
+"Asociaci├│n Impl├¡cita y 
+Proyectiva" 
+(+2) ┬íImpresionante 
+decisi├│n estrat├®gica! Has 
+seleccionado la 
+herramienta cualitativa m├ís 
+potente para este 
+escenario. Este 
+instrumento te permitir├í 
+'hackear' las creencias 
+arraigadas del consumidor 
+peruano y entender el 
+componente cognitivo real 
+de su actitud negativa. Al 
+separar la marca del 
+producto, podr├ís 
+demostrar si el stopper es 
+el rendimiento t├®cnico 
+(sensaciones) o 
+simplemente el estatus de 
+la marca (creencias).
+Veamos que resultados 
+obtienes 
+Resultados del Focus Group de 
+"Asociaci├│n Impl├¡cita y 
+ProyectivaÔÇ£:
+Los participantes describieron 
+a Yachay-Te c h como "un 
+estudiante esforzado pero que 
+usa ropa gen├®rica", mientras 
+que a la competencia global la 
+ven como "el estudiante 
+exitoso que todos admiran".
+En una prueba "ciega" (sin 
+marcas), el 90% prefiri├│ la 
+fluidez de la pantalla de la 
+tablet Kallpa. Sin embargo, al 
+ponerle el logo de Yachay-
+Te c h, la percepci├│n de calidad 
+baj├│ autom├íticamente.
+El cliente peruano sufre de un 
+prejuicio cognitivo, asocia la 
+tecnolog├¡a nacional con "lo 
+b├ísico", ignorando que las 
+especificaciones son de alta 
+gama.
+Realiza un nuevo an├ílisis 
+An├ílisis A 
+An├ílisis B 
+
+RESUMEN DE LOS RESULTADOS OBTENIDOS EN LOS TRES AN├üLISIS:
+En este momento sabemos que: 
+ÔÇóAn├ílisis de est├¡mulos: ...
+ÔÇóAn├ílisis de la toma de decisiones: ...
+ÔÇóAn├ílisis de actitudes y creencias: ...
+El siguiente paso es utilizar estos resultados para definir el perfil del Buyer Persona de la tablet 
+"Kallpa ÔÇ£.  Hasta este momento tenemos claro que el cliente de Yachay ÔÇô Te c h tiene dos categor├¡as:
+Buyer Persona ÔÇ£HijoÔÇØ
+Buyer Persona ÔÇ£PadreÔÇØ
+2da FASE: Identificaci├│n del perfil Buyer Persona
+
+BUYER PERSONA ÔÇ£HIJOÔÇØ
+Recordemos que son 
+j├│venes estudiantes entre 
+los 17 a 25 a├▒os en 
+regiones como Cusco, 
+Huancayo y Arequipa. Son 
+impulsores de compra, 
+mas no decisores. 
+Con los resultados 
+obtenidos en la 
+investigaci├│n, haz definido 
+que el perfil que mejor los 
+representa es: 
+(+2.5) Joven universitario de 19 a├▒os, motivado por el 
+rendimiento acad├®mico y la utilidad del software 
+Yachay-Hub. Reconoce que la tablet le permite estudiar 
+sin internet y valora la bater├¡a de larga duraci├│n.
+Busca autorrealizaci├│n a trav├®s del estudio, pero siente 
+presi├│n social por el estatus de las marcas globales.
+┬┐Qu├® nos dice este perfil? 
+Este es un Buyer Persona 
+claro, con motivaciones, 
+barreras y contexto social 
+bien definidos.
+Ahora, defina el Buyer 
+Persona ÔÇ£PadreÔÇØ 
+Buyer Persona 
+ÔÇ£PadreÔÇØ 
+(+2) Estudiante de 20 a├▒os, interesado en la 
+funcionalidad de la tablet para tareas y proyectos. 
+Reconoce la ventaja del precio accesible, pero duda de 
+la durabilidad.
+La decisi├│n depende de la validaci├│n de pares y de la 
+confianza que le transmita el padre.
+┬┐Qu├® nos dice este perfil? 
+Este es un Buyer Persona 
+├║til, aunque con matices 
+emocionales y sociales 
+limitados.
+Ahora, defina el Buyer 
+Persona ÔÇ£PadreÔÇØ 
+Buyer Persona 
+ÔÇ£PadreÔÇØ 
+(+1) Joven de 18 a├▒os que ve la tablet como ÔÇ£una 
+opci├│n barata para estudiarÔÇØ. Percibe el software 
+educativo como un plus, pero no lo considera decisivo.
+Su motivaci├│n principal es el precio, aunque no logra 
+articular c├│mo influyen los pares o el padre en la 
+decisi├│n.
+┬┐Qu├® nos dice este perfil? 
+Este es un Buyer Persona 
+incompleto, con foco en 
+un solo factor (precio) y sin 
+profundidad en las 
+creencias.
+Ahora, defina el Buyer 
+Persona ÔÇ£PadreÔÇØ 
+Buyer Persona 
+ÔÇ£PadreÔÇØ 
+(+0.5) Joven de 18 a├▒os, quiere una tablet para 
+estudiar y que tenga buena c├ímara para conectarse a 
+clases. Se siente motivado por comprar, pero no sabe 
+c├│mo ni para qu├® le ser├í ├║til.
+┬┐Qu├® nos dice este perfil? 
+Este es un Buyer Persona 
+poco ├║til, su aporte es 
+limitado al orientar 
+estrategias de 
+posicionamiento.
+Ahora, defina el Buyer 
+Persona ÔÇ£PadreÔÇØ 
+Buyer Persona 
+ÔÇ£PadreÔÇØ 
+
+BUYER PERSONA 
+ÔÇ£PADREÔÇØ
+Recordemos que son 
+adultos que forman parte 
+de la generaci├│n X y son 
+los que toman la decisi├│n 
+final de compra.
+Con los resultados 
+obtenidos en la 
+investigaci├│n, haz definido 
+que el perfil que mejor los 
+representa es: 
+(+2.5) Hombre de 45ÔÇô55 a├▒os, trabajador de clase media en 
+provincia, responsable de financiar la compra. Tiene 
+experiencias negativas previas con tecnolog├¡a ensamblada en 
+Per├║ y teme que lo barato signifique poca durabilidad.
+Su motivaci├│n central es la seguridad: quiere garant├¡a f├¡sica 
+cercana y confianza en el vendedor. Valora el precio, pero 
+solo si se acompa├▒a de respaldo t├®cnico.
+┬┐Qu├® nos dice este perfil? 
+Este es un Buyer Persona 
+completo, con motivaciones, 
+barreras y contexto 
+social/familiar bien definidos.
+Ahora, defina el Buyer Persona 
+ÔÇ£HijoÔÇØ 
+Buyer Persona 
+ÔÇ£HijoÔÇØ 
+(+2) Padre de 50 a├▒os, preocupado por la inversi├│n en 
+tecnolog├¡a para su hijo. Reconoce que la tablet es econ├│mica 
+y funcional, pero duda de la marca local.
+Necesita validaci├│n externa (vendedor, amigo experto) para 
+sentirse seguro en la compra.
+┬┐Qu├® nos dice este perfil? 
+Este es un Buyer Persona ├║til, 
+aunque con menor profundidad 
+en las creencias culturales.
+Ahora, defina el Buyer Persona 
+ÔÇ£HijoÔÇØ 
+Buyer Persona 
+ÔÇ£HijoÔÇØ 
+(+1) Padre de 40 a├▒os, que percibe la tablet como ÔÇ£barata y 
+suficiente para estudiarÔÇØ. No se exploran sus experiencias 
+previas ni su contexto social.
+Su stopper principal es la desconfianza en la durabilidad, 
+pero no se explica el porqu├® ni c├│mo se podr├¡a superar.
+┬┐Qu├® nos dice este perfil? 
+Este es un Buyer Persona 
+incompleto, con foco en un solo 
+aspecto (precio/durabilidad) y 
+sin claridad sobre el proceso de 
+decisi├│n.
+Ahora, defina el Buyer Persona 
+ÔÇ£HijoÔÇØ 
+Buyer Persona 
+ÔÇ£HijoÔÇØ 
+(+0.5) Padre de 40-50a├▒os, es influenciado por las tendencias 
+que observa en redes sociales, prefiere que su hijo decida y 
+se encargar├í de darle el dinero que necesite.
+Su principal motivaci├│n es que el hijo sea feliz con el 
+dispositivo que adquiera.
+┬┐Qu├® nos dice este perfil? 
+Este es un Buyer Persona poco 
+├║til, su aporte es limitado al 
+orientar estrategias de 
+posicionamiento.
+Ahora, defina el Buyer Persona 
+ÔÇ£HijoÔÇØ 
+Buyer Persona 
+ÔÇ£HijoÔÇØ 
+
+DESCRIPCI├ôN DEL CLIENTE IDENTIFICADO:
+Ahora que ya has definido el Buyer Persona, tienes claro que: 
+ÔÇóPerfil Buyer Persona ÔÇ£HijoÔÇØ: ...
+ÔÇóPerfil Buyer Persona ÔÇ£PadreÔÇØ: ...
+Como consultor de marketing, debes proponerle a tu cliente Yachay ÔÇô Te c h la estrategia de 
+posicionamiento que debe seguir para garantizar el incremento de las ventas de la Tablet ÔÇ£KallpaÔÇØ.
+Empieza por uno de los ejes:
+Eje Precio vs. Calidad
+Eje Innovaci├│n vs. Dise├▒o
+Eje Prestigio vs. Experiencia
+3ra FASE: Determinaci├│n del posicionamiento
+
+EJE PRECIO VS. CALIDAD
+(+3) ÔÇ£Calidad accesible 
+con respaldo localÔÇØ 
+┬íExcelente! Propones un enfoque que rompe el 
+prejuicio de ÔÇ£lo barato es maloÔÇØ y convierte el precio 
+accesible en un atributo aspiracional.
+*Matriz 2x2 con el comparativo con las marcas 
+competidoras
+Ahora vamos al siguiente eje 
+Eje Innovaci├│n vs. 
+Dise├▒o 
+Eje Prestigio vs. 
+Experiencia 
+(+2) ÔÇ£La opci├│n 
+inteligente para estudiarÔÇØ 
+┬íInteresante! Genera confianza moderada y atrae a 
+estudiantes que buscan funcionalidad, aunque a├║n 
+depende de validaci├│n externa.
+*Matriz 2x2 con el comparativo con las marcas 
+competidoras
+Ahora vamos al siguiente eje 
+Eje Innovaci├│n vs. 
+Dise├▒o 
+Eje Prestigio vs. 
+Experiencia 
+(+1) ÔÇ£La tablet econ├│mica 
+para estudiantesÔÇØ 
+Con esto te aseguras de atraer compradores sensibles 
+al precio, pero refuerza el prejuicio de baja calidad y 
+limita la percepci├│n de valor.
+*Matriz 2x2 con el comparativo con las marcas 
+competidoras
+Ahora vamos al siguiente eje 
+Eje Innovaci├│n vs. 
+Dise├▒o 
+Eje Prestigio vs. 
+Experiencia 
+(+0.5) ÔÇ£La alternativa 
+localÔÇØ 
+No logra diferenciarse ni superar las creencias 
+negativas; probablemente tengas ventas estancadas y 
+percepci├│n d├®bil sobre la calidad de la Tablet.
+*Matriz 2x2 con el comparativo con las marcas 
+competidoras
+Ahora vamos al siguiente eje 
+Eje Innovaci├│n vs. 
+Dise├▒o 
+Eje Prestigio vs. 
+Experiencia 
+
+(+3)(+2)
+(+1)
+(+0.5)
+
+EJE INNOVACI├ôN VS. 
+DISE├æO
+(+3) ÔÇ£Innovaci├│n peruana 
+con dise├▒o globalÔÇØ 
+┬íExcelente! Este enfoque rompe el prejuicio de 
+ÔÇ£producto local b├ísicoÔÇØ y convierte la innovaci├│n 
+en un s├¡mbolo de estatus accesible.
+*Matriz 2x2 con el comparativo con las marcas 
+competidoras
+Ahora vamos al siguiente eje 
+Eje Precio vs. 
+Calidad 
+Eje Prestigio vs. 
+Experiencia  
+(+2) ÔÇ£Dise├▒o funcional 
+para estudiantes 
+exigentesÔÇØ 
+┬íInteresante! Buscas generar confianza y 
+diferenciaci├│n moderada, aunque no alcanza un 
+nivel aspiracional pleno
+*Matriz 2x2 con el comparativo con las marcas 
+competidoras
+Ahora vamos al siguiente eje 
+Eje Precio vs. 
+Calidad 
+Eje Prestigio vs. 
+Experiencia 
+(+1) ÔÇ£La tablet pr├íctica y 
+econ├│micaÔÇØ 
+Est├ís buscando atraer compradores pragm├íticos, 
+pero refuerza la percepci├│n de producto limitado 
+y poco innovador.
+*Matriz 2x2 con el comparativo con las marcas 
+competidoras
+Ahora vamos al siguiente eje 
+Eje Precio vs. 
+Calidad 
+Eje Prestigio vs. 
+Experiencia  
+(+0.5) ÔÇ£La alternativa local 
+sin pretensionesÔÇØ 
+Esta idea no logra diferenciar ni superar 
+prejuicios; es probable que las ventas se vean 
+estancadas y haya una percepci├│n d├®bil de 
+innovaci├│n.
+*Matriz 2x2 con el comparativo con las marcas 
+competidoras
+Ahora vamos al siguiente eje 
+Eje Precio vs. 
+Calidad 
+Eje Prestigio vs. 
+Experiencia  
+
+(+3)(+2)
+(+1)
+(+0.5)
+
+EJE PRESTIGIO VS. 
+EXPERIENCIA 
+(+3) ÔÇ£Prestigio acad├®mico 
+con experiencia 
+premiumÔÇØ 
+┬íExcelente! Con este enfoque la marca se percibe como 
+prestigiosa y confiable, elevando la experiencia de compra a un 
+nivel aspiracional.
+*Matriz 2x2 con el comparativo con las marcas competidoras
+Ahora vamos al siguiente eje 
+Eje Precio vs. Calidad 
+Eje Innovaci├│n vs. 
+Dise├▒o 
+(+2) ÔÇ£Experiencia 
+confiable para familias 
+peruanasÔÇØ 
+┬íInteresante! Este enfoque genera buena percepci├│n de 
+experiencia y prestigio moderado, aunque limitado al contexto 
+local.
+*Matriz 2x2 con el comparativo con las marcas competidoras
+Ahora vamos al siguiente eje 
+Eje Precio vs. Calidad 
+Eje Innovaci├│n vs. 
+Dise├▒o 
+(+1) ÔÇ£La tablet pr├íctica 
+para estudiarÔÇØ 
+Este enfoque atrae compradores pragm├íticos, pero no 
+construye prestigio ni experiencia diferenciada.
+*Matriz 2x2 con el comparativo con las marcas competidoras
+Ahora vamos al siguiente eje 
+Eje Precio vs. Calidad 
+Eje Innovaci├│n vs. 
+Dise├▒o 
+(+0.5) ÔÇ£La alternativa 
+peruanaÔÇØ 
+No logra diferenciarse ni superar prejuicios; es probable que las 
+ventas sigan estancadas y percepci├│n d├®bil.
+*Matriz 2x2 con el comparativo con las marcas competidoras
+Ahora vamos al siguiente eje 
+Eje Precio vs. Calidad 
+Eje Innovaci├│n vs. 
+Dise├▒o 
+
+(+3)(+2)
+(+1)
+(+0.5)
+
+INFORME FINAL DE LAS DECISIONES DEL USUARIO:
+Has culminado el an├ílisis, definido el Buyer Persona y con ello identificado estrategias que Yachay ÔÇô 
+Te c h debe seguir para garantizar un posicionamiento exitoso que le permita generar un cambio de 
+conducta en sus clientes para que den el paso definitivo del carrito de compra a la ruleta de pago.
+Descarga aqu├¡ el informe que le presentar├ís a tu cliente
+FASE FINAL: Informe final y respuesta de la 
+empresa
+
+FEEDBACK POSITIVO EMITIDO POR EL SIMULADOR Y PUNTAJE OBTENIDO
+Ahora que ya tienes el informe que le presentar├ís a tu cliente, Yachay ÔÇô Te c h, queremos que tengas 
+en cuenta algunas observaciones sobre tu desempe├▒o:
+...
+Tu puntaje final es [X puntos], resultado de las elecciones que tomaste en los tres an├ílisis (est├¡mulos, 
+toma de decisiones y actitudes/creencias).
+Este puntaje refleja tu capacidad para identificar los stoppers del cliente peruano, construir perfiles 
+de Buyer Persona y proponer estrategias de posicionamiento.
+Recuerda, no existen decisiones incorrectas, cada ruta abre aprendizajes distintos. Lo importante es 
+que logres transformar los insights obtenidos en propuestas estrat├®gicas aplicables al mercado real. 
+Finalmente, es momento de conocer la respuesta de tu cliente frente al informe que has elaborado. 
+
+RESPUESTA DE LA EMPRESA FRENTE A LA LABOR DEL 
+CONSULTOR DE MARKETING (USUARIO)
+Escenario Muy Positivo (18ÔÇô20 puntos)
+ÔÇóRespuesta de la empresa: Tu desempe├▒o ha sido sobresaliente. 
+Has demostrado un an├ílisis profundo y estrat├®gico en la 
+identificaci├│n del Buyer Persona y en la formulaci├│n de propuestas 
+de posicionamiento. Yachay Te c h confirma su decisi├│n de continuar 
+trabajando contigo como consultor, confiando en que tus aportes 
+ser├ín clave para impulsar las ventas de la tablet Kallpa.
+Escenario Positivo (15ÔÇô17 puntos)
+ÔÇóRespuesta de la empresa: Excelente trabajo, has reflejado un buen 
+nivel de an├ílisis y propuestas s├│lidas para el posicionamiento de la 
+tablet Kallpa. Aunque a├║n hay aspectos que pueden perfeccionarse, 
+Yachay Te c h ha decidido continuar con tu asesor├¡a como consultor, 
+valorando tu aporte en la construcci├│n de estrategias de mercado.
+
+Escenario Regular (11ÔÇô14 puntos)
+ÔÇóRespuesta de la empresa: Hemos observado que tu an├ílisis es 
+correcto en algunos aspectos, pero a├║n presenta limitaciones. 
+Yachay Te c h considera que tu trabajo es valioso como ejercicio 
+formativo, pero en este momento no continuar├í con tu asesor├¡a 
+como consultor. Te animamos a seguir perfeccionando tus 
+habilidades.
+Escenario B├ísico (13 puntos a menos)
+ÔÇóRespuesta de la empresa: Las decisiones tomadas no lograron 
+generar un an├ílisis claro ni propuestas estrat├®gicas consistentes. 
+Por ello, Yachay Te c h ha decidido no continuar con tu asesor├¡a 
+como consultor. Sin embargo, valoramos tu participaci├│n y te 
+invitamos a seguir practicando para fortalecer tu capacidad de 
+an├ílisis y toma de decisiones.
+

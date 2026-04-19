@@ -12,7 +12,7 @@
         <span class="font-semibold text-sm uppercase tracking-wider">Dashboard</span>
       </a>
       
-      <a routerLink="/simulador/fase/1/lectura" class="flex items-center space-x-3 px-4 py-3 text-white/70 hover:bg-white/5 hover:text-white rounded-lg transition-colors">
+      <a (click)="iniciarSimulador()" class="flex items-center space-x-3 px-4 py-3 text-white/70 hover:bg-white/5 hover:text-white rounded-lg transition-colors cursor-pointer">
         <span class="material-symbols-outlined">science</span>
         <span class="font-semibold text-sm uppercase tracking-wider">Simulador</span>
       </a>
@@ -49,7 +49,7 @@
         <div class="relative z-10 w-full md:w-2/3">
           <h3 class="text-3xl font-extrabold mb-2 font-headline">Panel de Control</h3>
           <p class="text-white/70 text-sm leading-relaxed mb-6 font-body">Bienvenido al sistema Yachay-Pro. Utiliza el simulador para realizar tus análisis de gestión y toma de decisiones.</p>
-          <button routerLink="/simulador/fase/1/lectura" class="bg-secondary text-white px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-secondary/90 transition-colors shadow-lg shadow-secondary/30">
+          <button (click)="iniciarSimulador()" [disabled]="isNavigating" class="bg-secondary text-white px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-secondary/90 transition-colors shadow-lg shadow-secondary/30 disabled:opacity-50">
             Iniciar Simulador
           </button>
         </div>

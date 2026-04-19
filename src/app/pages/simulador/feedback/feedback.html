@@ -1,0 +1,89 @@
+<div class="min-h-screen bg-surface flex flex-col font-body">
+  <header class="bg-primary text-white p-6 shadow-md flex items-center justify-between">
+    <div>
+      <h1 class="text-2xl font-bold font-headline">Informe Final de Simulador</h1>
+      <p class="text-sm opacity-90">Resumen y evaluación de tus decisiones como consultor en Yachay-Tech</p>
+    </div>
+    <button routerLink="/formulario" 
+            class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-xl transition font-bold flex items-center space-x-2">
+      <span class="material-symbols-outlined text-[20px]">home</span>
+      <span>Dashboard</span>
+    </button>
+  </header>
+
+  <main class="flex-1 p-6 md:p-10 max-w-5xl mx-auto w-full">
+    <!-- Loading skeleton -->
+    <div *ngIf="isLoading" class="animate-pulse flex flex-col space-y-6">
+      <div class="h-40 bg-secondary/20 rounded-2xl w-full"></div>
+      <div class="h-64 bg-surface-variant rounded-2xl w-full"></div>
+    </div>
+
+    <div *ngIf="!isLoading && historial" class="space-y-8 animate-fade-in">
+
+      <!-- Score Card -->
+      <section class="bg-white rounded-3xl p-8 shadow-sm border border-secondary/20 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-6">
+          <div class="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center text-green-600 flex-shrink-0 border-4 border-green-100">
+            <span class="material-symbols-outlined text-4xl">emoji_events</span>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-primary font-headline">¡Simulación Finalizada!</h2>
+            <p class="text-on-surface-variant mt-1">Has concluido la crisis de adopción de la tablet Kallpa.</p>
+            <div class="mt-2 text-sm text-on-surface">Puntaje global obtenido: <strong class="text-secondary text-lg">{{ historial.puntajeTotal }}</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- History of decisions -->
+      <section>
+        <h3 class="text-xl font-bold text-primary font-headline mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined">history</span>
+          Historial de Decisiones (Navegar hacia atrás)
+        </h3>
+        
+        <div class="space-y-4">
+          <div *ngFor="let decision of historial.decisiones; let i = index" 
+               class="bg-white rounded-2xl p-6 shadow-sm border border-outline-variant/30 flex gap-4 transition-all hover:shadow-md">
+            
+            <!-- Step indicator -->
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold shadow-sm">
+                {{ i + 1 }}
+              </div>
+              <div class="w-0.5 h-full bg-outline-variant/20 my-2" *ngIf="i !== historial.decisiones.length - 1"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="text-lg font-bold text-primary">{{ decision.nombreFase }}</h4>
+                <div class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">
+                  + {{ decision.puntajeObtenido }} pts
+                </div>
+              </div>
+
+              <div class="bg-surface p-4 rounded-xl mb-4 border border-outline-variant/10">
+                <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1 block">Acción seleccionada</span>
+                <p class="text-on-surface">{{ decision.descripcionAlternativa }}</p>
+              </div>
+
+              <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 flex gap-3">
+                <span class="material-symbols-outlined text-blue-500 mt-0.5">psychology</span>
+                <div>
+                  <span class="text-xs font-bold text-blue-700 uppercase tracking-wider mb-1 block">Feedback y Resultado Estratégico</span>
+                  <p class="text-blue-900 text-sm leading-relaxed">{{ decision.retroalimentacion }}</p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="mt-8 text-center" *ngIf="historial.decisiones.length === 0">
+          <p class="text-on-surface-variant italic">No se registraron decisiones en esta sesión.</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>

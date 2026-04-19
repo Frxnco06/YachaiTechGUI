@@ -3,6 +3,7 @@ export interface Fase {
   numero: number;
   nombre: string;
   contenido: string;
+  alternativas: Alternativa[];
 }
 
 export interface Alternativa {
@@ -11,6 +12,7 @@ export interface Alternativa {
   puntaje: number;
   retroalimentacion: string;
   orden: number;
+  faseSiguienteId: number | null;
 }
 
 export interface Sesion {
@@ -21,9 +23,26 @@ export interface Sesion {
 
 export interface DecisionRequest {
   idsAlternativas: number[];
+  idSesion: number;
 }
 
-export interface DecisionResponse {
-  idPuntaje: number;
+export interface DetalleDecision {
+  nombreFase: string;
+  descripcionAlternativa: string;
   retroalimentacion: string;
+  puntajeObtenido: number;
 }
+
+export interface HistorialSesion {
+  idSesion: number;
+  fchInicio: Date;
+  completado: boolean;
+  puntajeTotal: number;
+  decisiones: DetalleDecision[];
+}
+
+/**
+ * El endpoint POST /api/simulador/sesiones/{id}/decisiones
+ * retorna la SIGUIENTE FASE (FaseDtoResponse), no un DTO individual.
+ */
+export type DecisionResponse = Fase;

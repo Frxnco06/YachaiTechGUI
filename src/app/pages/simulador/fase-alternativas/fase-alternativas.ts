@@ -16,12 +16,13 @@ import { Alternativa, DecisionResponse, Sesion } from '../../../core/models/simu
 export class FaseAlternativasComponent implements OnInit {
   alternativas: Alternativa[] = [];
   sesion: Sesion | null = null;
-  resultado: DecisionResponse | null = null;
-  numeroFase = 1;
+  siguienteFase: DecisionResponse | null = null;
+  idFase = 1;
   isLoading = true;
   isSubmitting = false;
   alternativasSeleccionadas: Set<number> = new Set<number>();
   bloqueado = false;
+  simuladorCompletado = false;
 
   constructor(
     private simuladorService: SimuladorService,
@@ -34,7 +35,7 @@ export class FaseAlternativasComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.numeroFase = +params['numero'];
+      this.idFase = +params['numero'];
       this.inicializar();
     });
   }
@@ -42,7 +43,6 @@ export class FaseAlternativasComponent implements OnInit {
   private inicializar(): void {
     this.isLoading = true;
 
-    // First, ensure we have an active session
     this.simuladorService.crearSesion().subscribe({
       next: (sesion) => {
         console.log('✅ Sesión iniciada:', sesion);
@@ -59,9 +59,16 @@ export class FaseAlternativasComponent implements OnInit {
   }
 
   private cargarAlternativas(): void {
-    this.simuladorService.obtenerAlternativas(this.numeroFase).subscribe({
+    this.simuladorService.obtenerAlternativas(this.idFase).subscribe({
       next: (alternativas) => {
-        console.log('✅ Alternativas cargadas:', alternativas);
+        console.log('✅ Alternativas cargadas (antes de barajar):', alternativas);
+        
+        // Shuffle the alternatives using Fisher-Yates
+        for (let i = alternativas.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [alternativas[i], alternativas[j]] = [alternativas[j], alternativas[i]];
+        }
+        
         this.alternativas = alternativas;
         this.isLoading = false;
         this.cdr.detectChanges();
@@ -92,13 +99,21 @@ export class FaseAlternativasComponent implements OnInit {
     this.isSubmitting = true;
 
     this.simuladorService.registrarDecision(this.sesion.idSesion, {
-      idsAlternativas: Array.from(this.alternativasSeleccionadas)
+      idsAlternativas: Array.from(this.alternativasSeleccionadas),
+      idSesion: this.sesion.idSesion
     }).subscribe({
-      next: (resultado) => {
-        console.log('✅ Decisiones registradas:', resultado);
-        this.resultado = resultado;
+      next: (siguienteFase) => {
+        console.log('✅ Decisiones registradas. Siguiente fase:', siguienteFase);
         this.bloqueado = true;
         this.isSubmitting = false;
+
+        if (siguienteFase && siguienteFase.id) {
+          // Hay siguiente fase disponible
+          this.siguienteFase = siguienteFase;
+        } else {
+          // Última fase — simulador completado, navegar al feedback
+          this.router.navigate(['/simulador/feedback']);
+        }
         this.cdr.detectChanges();
       },
       error: (err) => {
@@ -107,17 +122,46 @@ export class FaseAlternativasComponent implements OnInit {
         this.alternativasSeleccionadas.clear();
         this.cdr.detectChanges();
 
-        let msg = 'No se pudo registrar la decisión.';
         if (err.status === 409) {
-          msg = 'Ya has tomado decisiones para esta fase.';
-          this.bloqueado = true;
-          this.cdr.detectChanges();
-        } else if (err.error?.message) {
-          msg = err.error.message;
+          // Ya se registró una decisión para esta fase → avanzar automáticamente
+          this.avanzarAFaseSiguiente();
+        } else {
+          const msg = err.error?.message || 'No se pudo registrar la decisión.';
+          this.notificationService.error('Error', msg);
         }
-        this.notificationService.error('Error', msg);
       }
     });
+  }
+
+  /**
+   * Cuando la fase actual ya fue completada (409), determina la siguiente fase
+   * usando el faseSiguienteId de las alternativas cargadas y navega automáticamente.
+   */
+  private avanzarAFaseSiguiente(): void {
+    const siguienteId = this.alternativas.find(a => a.faseSiguienteId != null)?.faseSiguienteId;
+
+    if (siguienteId) {
+      this.notificationService.info(
+        'Fase ya completada',
+        'Ya tomaste decisiones en esta fase. Avanzando a la siguiente...'
+      );
+      setTimeout(() => {
+        this.router.navigate(['/simulador/fase', siguienteId, 'lectura']);
+      }, 1500);
+    } else {
+      // Es la última fase — no hay siguiente
+      this.bloqueado = true;
+      this.cdr.detectChanges();
+      this.notificationService.success(
+        '¡Simulador completado!',
+        'Has completado todas las fases del simulador.'
+      );
+    }
+  }
+
+  navegarSiguienteFase(): void {
+    if (!this.siguienteFase) return;
+    this.router.navigate(['/simulador/fase', this.siguienteFase.id, 'lectura']);
   }
 
   logout(): void {

@@ -35,11 +35,11 @@
     <header class="h-20 bg-white shadow-sm flex items-center justify-between px-8 z-10">
       <div class="flex items-center space-x-3">
         <span class="material-symbols-outlined text-secondary text-2xl">quiz</span>
-        <h2 class="text-xl font-bold text-primary font-headline">Fase {{ numeroFase }} — Selección</h2>
+        <h2 class="text-xl font-bold text-primary font-headline">Fase {{ idFase }} — Selección</h2>
       </div>
       
       <div class="flex items-center space-x-3">
-        <a [routerLink]="['/simulador/fase', numeroFase, 'lectura']" 
+        <a [routerLink]="['/simulador/fase', idFase, 'lectura']" 
            class="text-sm text-on-surface-variant hover:text-secondary transition-colors flex items-center space-x-1 font-body">
           <span class="material-symbols-outlined text-[18px]">arrow_back</span>
           <span>Volver a la lectura</span>
@@ -128,29 +128,67 @@
           <span class="text-sm text-on-surface-variant font-body">Registrando decisión...</span>
         </div>
 
-        <!-- Result Card (shown after selection) -->
-        <div *ngIf="resultado" class="animate-fade-in">
+        <!-- Result Card: Next Phase Info (shown after decision is registered) -->
+        <div *ngIf="siguienteFase" class="animate-fade-in">
           <div class="bg-white rounded-2xl p-8 shadow-sm border border-secondary/30">
-            
 
+            <!-- Success header -->
+            <div class="flex items-center space-x-3 mb-6">
+              <div class="w-12 h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined">check_circle</span>
+              </div>
+              <div>
+                <h4 class="text-lg font-bold text-primary font-headline">¡Decisión registrada!</h4>
+                <p class="text-xs text-on-surface-variant font-body">Tu selección ha sido guardada exitosamente.</p>
+              </div>
+            </div>
 
-            <!-- Feedback -->
+            <!-- Next phase preview -->
             <div class="bg-surface rounded-xl p-6 border border-outline-variant/10">
               <div class="flex items-center space-x-2 mb-3">
-                <span class="material-symbols-outlined text-secondary">auto_awesome</span>
-                <p class="text-sm font-bold text-primary font-headline">Retroalimentación de la fase conjunta</p>
+                <span class="material-symbols-outlined text-secondary">arrow_forward</span>
+                <p class="text-sm font-bold text-primary font-headline">Siguiente fase disponible</p>
               </div>
-              <div class="space-y-4">
-                <p *ngFor="let msg of resultado.retroalimentacion.split('\n\n')" class="text-on-surface text-sm leading-relaxed font-body">
-                  {{ msg }}
-                </p>
-              </div>
+              <p class="text-on-surface text-sm leading-relaxed font-body mb-4">
+                <strong>{{ siguienteFase.nombre }}</strong>
+              </p>
+              <button (click)="navegarSiguienteFase()"
+                class="bg-secondary text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-secondary/90 active:scale-[0.98] transition-all shadow-lg shadow-secondary/30 flex items-center space-x-2 font-headline">
+                <span>Continuar a la siguiente fase</span>
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </button>
             </div>
 
             <!-- Lock message -->
             <div class="mt-4 flex items-center space-x-2 text-on-surface-variant">
               <span class="material-symbols-outlined text-[16px]">lock</span>
               <p class="text-xs font-body">Tu decisión ha sido registrada y no puede ser modificada.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulator Completed Card (shown when last phase is finished) -->
+        <div *ngIf="simuladorCompletado" class="animate-fade-in">
+          <div class="bg-white rounded-2xl p-8 shadow-sm border border-green-300">
+            <div class="flex items-center space-x-3 mb-6">
+              <div class="w-12 h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined">emoji_events</span>
+              </div>
+              <div>
+                <h4 class="text-lg font-bold text-primary font-headline">¡Simulador completado!</h4>
+                <p class="text-xs text-on-surface-variant font-body">Has completado todas las fases exitosamente.</p>
+              </div>
+            </div>
+
+            <div class="bg-surface rounded-xl p-6 border border-outline-variant/10">
+              <p class="text-on-surface text-sm leading-relaxed font-body mb-4">
+                Felicitaciones, has finalizado el simulador de toma de decisiones. Tu puntaje ha sido registrado.
+              </p>
+              <button routerLink="/formulario"
+                class="bg-primary text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-primary/90 active:scale-[0.98] transition-all shadow-lg flex items-center space-x-2 font-headline">
+                <span>Volver al Dashboard</span>
+                <span class="material-symbols-outlined">home</span>
+              </button>
             </div>
           </div>
         </div>
