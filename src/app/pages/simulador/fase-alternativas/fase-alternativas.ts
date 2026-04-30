@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { SimuladorService } from '../../../core/services/simulador.service';
@@ -29,7 +29,7 @@ interface FeedbackState {
   styleUrls: ['./fase-alternativas.css']
 })
 export class FaseAlternativasComponent implements OnInit {
-
+  @ViewChild('screen') screen!: ElementRef;
   // ── State ────────────────────────────────────────────────────────────────
   idFase: number = 1;
   isLoading = true;

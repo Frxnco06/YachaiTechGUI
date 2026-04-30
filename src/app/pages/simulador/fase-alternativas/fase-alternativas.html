@@ -18,6 +18,7 @@
         <span class="material-symbols-outlined text-xl">analytics</span>
         <span class="font-semibold text-xs uppercase tracking-wider">Simulación</span>
       </div>
+
     </nav>
 
     <div class="p-5 border-t border-white/5">
@@ -233,8 +234,6 @@
             </p>
           </div>
 
-
-          
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
   <button *ngFor="let alt of alternativasFiltradas" 
           (click)="bloqueado ? null : toggleAlternativa(alt)"
@@ -288,7 +287,7 @@
                 <h4 class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-4">Contexto y Diagnóstico</h4>
                 <p class="text-slate-600 text-sm leading-relaxed italic">"{{ feedbackActual.texto }}"</p>
               </div>
-              <div class="report-section" *ngIf="feedbackActual.resultados?.length">
+              <div class="report-section" *ngIf="feedbackActual.resultados.length">
                 <h4 class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-4">Motivación y Barreras</h4>
                 <div *ngFor="let res of feedbackActual.resultados" class="flex items-start p-4 bg-slate-50 rounded-lg mb-2">
                   <span class="material-symbols-outlined text-indigo-400 mr-3 text-sm">radio_button_checked</span>

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { SimuladorService } from '../../../core/services/simulador.service';
 import { HistorialSesion } from '../../../core/models/simulador.interface';
+import html2canvas from 'html2canvas';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -28,8 +29,10 @@ interface Escenario {
 })
 export class FeedbackComponent implements OnInit {
 
+  @ViewChild('screen') screen!: ElementRef;
   @ViewChild('chatEnd') chatEnd!: ElementRef;
 
+  isChatOpen: boolean = false;
   historial: HistorialSesion | null = null;
   isLoading = true;
   mensajeUsuario = '';
@@ -148,5 +151,34 @@ export class FeedbackComponent implements OnInit {
     setTimeout(() => {
       this.chatEnd?.nativeElement?.scrollIntoView({ behavior: 'smooth' });
     }, 100);
+  }
+  async capturarPantalla() {
+    if (!this.screen) return;
+    const element = this.screen.nativeElement;
+    element.classList.add('modo-captura');
+
+    try {
+      await new Promise(resolve => setTimeout(resolve, 50));
+      const element = this.screen.nativeElement;
+      
+      const canvas = await html2canvas(element, {
+        scale: 2, 
+        useCORS: true,
+        backgroundColor: '#F7F7F9',
+        windowWidth: 1280,
+        
+        logging: false,
+      });
+
+      const imgData = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.download = `Dictamen_Final_YachayPro.png`;
+      link.href = imgData;
+      link.click();
+    } catch (error) {
+      console.error('Error al generar la imagen:', error);
+    } finally {
+    element.classList.remove('modo-captura');
+  }
   }
 }

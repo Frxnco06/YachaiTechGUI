@@ -8,3 +8,25 @@
 .gradient-btn { background: linear-gradient(135deg, #3525cd, #4f46e5); }
 .gradient-btn:active { background: linear-gradient(315deg, #3525cd, #4f46e5); }
 .shadow-ambient { box-shadow: 0 20px 40px -12px rgba(11, 28, 48, 0.08); }
+
+
+/* Limpieza de items */
+.nav-item {
+  @apply flex items-center gap-4 px-4 py-4 rounded-2xl text-slate-400 border border-transparent 
+         transition-all duration-300 hover:bg-white/5 hover:text-white;
+}
+
+/* Estado Activo: Sin efectos extraños, solo color sólido y luz suave */
+.active-nav {
+  @apply bg-indigo-600 text-white shadow-lg shadow-indigo-500/20 !important;
+}
+
+.active-nav span {
+  @apply text-white !important;
+}
+
+/* Evitar que el contenido se meta debajo si usas fixed */
+:host {
+  display: block;
+  z-index: 100;
+}
