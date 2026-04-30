@@ -8,8 +8,12 @@ export class SimuladorService {
   private readonly FASES_URL = '/api/fases';
   private readonly SIMULADOR_URL = '/api/simulador';
 
+  
   constructor(private http: HttpClient) {}
 
+  obtenerProgreso(idSesion: number, idFase: number): Observable<any> {
+  return this.http.get<any>(`${this.SIMULADOR_URL}/sesiones/${idSesion}/fases/${idFase}/progreso`);
+  }
   obtenerFase(idFase: number): Observable<Fase> {
     return this.http.get<Fase>(`${this.FASES_URL}/${idFase}`);
   }

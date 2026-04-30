@@ -5,6 +5,7 @@ import { AuthService } from '../../core/services/auth';
 import { NotificationService } from '../../core/services/notification.service';
 import { LoginSchema } from '../../core/validators/auth.schemas';
 import { CommonModule } from '@angular/common';
+import { SimuladorService } from '../../core/services/simulador.service';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private simuladorService: SimuladorService,
     private router: Router,
     private notificationService: NotificationService,
     private cdr: ChangeDetectorRef
@@ -53,16 +55,30 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.isSubmitting = true;
-    
-    this.authService.login(validationResult.data).subscribe({
-      next: (res: any) => {
-        this.isSubmitting = false;
-        this.notificationService.success('¡Bienvenido a Yachay-Pro!', 'Sesión iniciada correctamente');
-        this.router.navigate(['/formulario']);
-        // Note: Token storage is already handled safely by AuthService
-      },
-      error: (err: any) => {
+this.isSubmitting = true;
+  
+  this.authService.login(validationResult.data).subscribe({
+    next: () => {
+      this.simuladorService.obtenerSesionActiva().subscribe({
+        next: (sesion) => {
+          this.isSubmitting = false;
+          this.notificationService.success('¡Bienvenido!', 'Retomando tu sesión actual');
+          
+          this.simuladorService.obtenerFaseActual().subscribe(fase => {
+            if (fase) {
+              this.router.navigate(['/simulador/fase', fase.numero, 'alternativas']);
+            } else {
+              this.router.navigate(['/formulario']);
+            }
+          });
+        },
+        error: () => {
+          this.isSubmitting = false;
+          this.router.navigate(['/formulario']);
+        }
+      });
+    },
+    error: (err) => {
         this.isSubmitting = false;
         this.cdr.detectChanges();
         console.error('Error en el login:', err);

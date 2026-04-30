@@ -37,6 +37,7 @@ export class FaseAlternativasComponent implements OnInit {
   bloqueado = false;
   simuladorCompletado = false;
   summaryExpanded = true;
+  idSesion: number = 0;
 
   // ── Data ─────────────────────────────────────────────────────────────────
   alternativas: Alternativa[] = [];
@@ -161,31 +162,57 @@ export class FaseAlternativasComponent implements OnInit {
 
   
   // ── Progress Recovery ─────────────────────────────────────────────────────
-  private recuperarProgreso(): void {
-    this.simuladorService.obtenerHistorial().subscribe({
-      next: historial => {
-        if (!historial?.decisiones) return;
-
-        historial.decisiones.forEach(decision => {
-          const alt = this.alternativas.find(a => a.descAlternativa === decision.descripcionAlternativa);
-          if (alt?.grupo) {
-            this.completedGroups.add(alt.grupo);
-          }
-        });
-
-        if (this.isHubPhase && this.completedGroups.size === 3) {
-          this.bloquearYCargarSiguienteFase();
-          return;
-        }
-
-        if (this.idFase === 2) {
-          this.manejarProgresoFase2();
-        }
-
-        this.cdr.detectChanges();
+private recuperarProgreso(): void {
+  // 1. Primero obtenemos el progreso específico para restaurar checks y detectar bloqueo 409
+  this.simuladorService.obtenerProgreso(this.idSesion, this.idFase).subscribe({
+    next: (progreso) => {
+      if (progreso && progreso.idsAlternativas) {
+        progreso.idsAlternativas.forEach((id: number) => this.alternativasSeleccionadas.add(id));
       }
-    });
-  }
+      this.consultarHistorialGeneral();
+    },
+    error: (err) => {
+      if (err.status === 409) {
+        this.bloqueado = true;
+        this.notificationService.warning('Modo Lectura', 'Ya enviaste tus respuestas para esta fase.');
+      }
+      this.consultarHistorialGeneral();
+    }
+  });
+}
+
+private consultarHistorialGeneral(): void {
+  this.simuladorService.obtenerHistorial().subscribe({
+    next: historial => {
+      if (!historial?.decisiones) {
+        this.cdr.detectChanges();
+        return;
+      }
+
+      historial.decisiones.forEach(decision => {
+        const alt = this.alternativas.find(a => a.descAlternativa === decision.descripcionAlternativa);
+        if (alt?.grupo) {
+          this.completedGroups.add(alt.grupo);
+        }
+      });
+
+      if (this.isHubPhase && this.completedGroups.size === 3) {
+        this.bloquearYCargarSiguienteFase();
+        return;
+      }
+
+      if (this.idFase === 2) {
+        this.manejarProgresoFase2();
+      }
+
+      this.cdr.detectChanges();
+    },
+    error: () => {
+      this.cdr.detectChanges();
+    }
+  });
+}
+
 
   private manejarProgresoFase2(): void {
     const hijoCompletado = this.completedGroups.has('Hijo');
@@ -216,6 +243,20 @@ export class FaseAlternativasComponent implements OnInit {
       this.cdr.detectChanges();
     });
   }
+
+  private verificarAccesoFase(): void {
+  this.simuladorService.obtenerFaseActual().subscribe({
+    next: (faseActual) => {
+      if (faseActual && faseActual.numero > this.idFase) {
+        // El estudiante intenta entrar a una fase que YA superó
+        this.bloqueado = true;
+        this.notificationService.info('Modo Lectura', 'Esta fase ya ha sido completada y no puede ser modificada.');
+      }
+    }
+  });
+}
+
+
 
   // ── Interaction ───────────────────────────────────────────────────────────
   seleccionarGrupo(grupo: string): void {

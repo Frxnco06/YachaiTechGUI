@@ -36,6 +36,14 @@
 
   <main class="flex-grow flex flex-col relative overflow-y-auto">
 
+
+<div *ngIf="bloqueado" class="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-center gap-3 animate-fade-in">
+  <span class="material-symbols-outlined text-amber-600">lock</span>
+  <p class="text-amber-800 text-[10px] font-bold uppercase tracking-widest">
+    Modo lectura activo: No se pueden modificar las respuestas.
+  </p>
+</div>
+
     <header class="h-16 bg-white sticky top-0 border-b border-slate-200 flex items-center justify-between px-6 md:px-10 z-20">
       <div class="flex items-center space-x-3">
         <div class="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center text-xs font-bold">
@@ -225,26 +233,28 @@
             </p>
           </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-                <button *ngFor="let alt of alternativasFiltradas" 
-          (click)="toggleAlternativa(alt)"
+
+          
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+  <button *ngFor="let alt of alternativasFiltradas" 
+          (click)="bloqueado ? null : toggleAlternativa(alt)"
           [disabled]="isSubmitting || bloqueado"
           [ngClass]="{
             'border-indigo-600 bg-indigo-50/50 ring-2 ring-indigo-500/20': alternativasSeleccionadas.has(alt.idAlternativa),
-            'border-slate-200 bg-white hover:border-indigo-300 hover:shadow-md': !alternativasSeleccionadas.has(alt.idAlternativa),
-            'opacity-50 cursor-not-allowed': isSubmitting || bloqueado
+            'border-slate-200 bg-white hover:border-indigo-300': !alternativasSeleccionadas.has(alt.idAlternativa) && !bloqueado,
+            'opacity-60 cursor-not-allowed grayscale-[0.3]': bloqueado
           }"
-          class="group relative p-6 text-left border-2 rounded-2xl transition-all duration-300 flex flex-col h-full active:scale-95">
-    
-          <div class="absolute top-4 right-4">
-              <div [ngClass]="alternativasSeleccionadas.has(alt.idAlternativa) ? 'bg-indigo-600 scale-110' : 'bg-slate-100'" 
-           class="w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center transition-transform">
-                <span *ngIf="alternativasSeleccionadas.has(alt.idAlternativa)" class="material-symbols-outlined text-white text-[10px]">check</span>
-            </div>
-          </div>
+          class="group relative p-6 text-left border-2 rounded-2xl transition-all duration-300 flex flex-col h-full">
 
-    <div class="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center mb-4 group-hover:bg-indigo-100 transition-colors">
-      <span class="material-symbols-outlined text-slate-400 group-hover:text-indigo-600 text-lg">tactic</span>
+    <div class="absolute top-4 right-4">
+      <div [ngClass]="alternativasSeleccionadas.has(alt.idAlternativa) ? 'bg-indigo-600 scale-110' : 'bg-slate-100'" 
+           class="w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center transition-transform">
+        <span *ngIf="alternativasSeleccionadas.has(alt.idAlternativa)" class="material-symbols-outlined text-white text-[10px]">check</span>
+      </div>
+    </div>
+
+    <div class="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center mb-4">
+      <span class="material-symbols-outlined text-slate-400 text-lg">tactic</span>
     </div>
 
     <h5 class="text-xs font-bold leading-relaxed flex-grow"
@@ -253,6 +263,8 @@
     </h5>
   </button>
 </div>
+
+
           <div *ngIf="alternativasSeleccionadas.size > 0" class="flex justify-end pt-4">
             <button (click)="enviarDecisiones()" [disabled]="isSubmitting"
                     class="bg-slate-900 text-white px-8 py-3.5 rounded-lg font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-slate-800 transition-all flex items-center space-x-2">
