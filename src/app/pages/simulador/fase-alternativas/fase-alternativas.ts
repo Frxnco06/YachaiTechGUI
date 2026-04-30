@@ -124,9 +124,19 @@ export class FaseAlternativasComponent implements OnInit {
     this.siguienteFase = null;
   }
 
+  private shuffle<T>(arr: T[]): T[] {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
   private cargarAlternativas(): void {
     this.simuladorService.obtenerAlternativas(this.idFase).subscribe({
       next: alternativas => {
+        // Se aplica el shuffle antes de cualquier procesamiento de estado
         this.alternativas = this.shuffle(alternativas);
         this.isLoading = false;
 
@@ -136,6 +146,7 @@ export class FaseAlternativasComponent implements OnInit {
         } else if (this.idFase === 2) {
           this.recuperarProgreso();
         } else {
+          // alternativasFiltradas ahora hereda el orden aleatorio
           this.alternativasFiltradas = this.alternativas;
         }
         this.cdr.detectChanges();
@@ -148,16 +159,7 @@ export class FaseAlternativasComponent implements OnInit {
     });
   }
 
-  /** Fisher-Yates shuffle — pure function, returns a new array. */
-  private shuffle<T>(arr: T[]): T[] {
-    const a = [...arr];
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  }
-
+  
   // ── Progress Recovery ─────────────────────────────────────────────────────
   private recuperarProgreso(): void {
     this.simuladorService.obtenerHistorial().subscribe({
@@ -364,7 +366,6 @@ export class FaseAlternativasComponent implements OnInit {
       imagen
     };
   }
-
   // ── Auth ──────────────────────────────────────────────────────────────────
   logout(): void {
     this.authService.logout();
