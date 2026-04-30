@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private notificationService: NotificationService,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -34,20 +34,23 @@ export class LoginComponent implements OnInit {
       contrasena: ['']
     });
 
-    // Clear errors on input change
     this.loginForm.valueChanges.subscribe(() => {
-      this.errors = {};
+      this.errors = {}; // Limpia errores visuales mientras el usuario escribe
     });
   }
 
   iniciarSesion() {
     if (this.isSubmitting) return;
 
-    const values = this.loginForm.value;
-    const validationResult = LoginSchema.safeParse(values);
+    // MEJORA 1: Limpiamos espacios en blanco del correo (evita errores de copiado/pegado)
+    const formValues = {
+      correo: this.loginForm.value.correo.trim(),
+      contrasena: this.loginForm.value.contrasena
+    };
+
+    const validationResult = LoginSchema.safeParse(formValues);
 
     if (!validationResult.success) {
-      // Map Zod errors
       validationResult.error.issues.forEach(issue => {
         const path = issue.path[0] as string;
         this.errors[path] = issue.message;
@@ -55,34 +58,48 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-this.isSubmitting = true;
-  
-  this.authService.login(validationResult.data).subscribe({
-    next: () => {
-      this.simuladorService.obtenerSesionActiva().subscribe({
-        next: (sesion) => {
-          this.isSubmitting = false;
-          this.notificationService.success('¡Bienvenido!', 'Retomando tu sesión actual');
-          
-          this.simuladorService.obtenerFaseActual().subscribe(fase => {
-            if (fase) {
-              this.router.navigate(['/simulador/fase', fase.numero, 'alternativas']);
-            } else {
-              this.router.navigate(['/formulario']);
-            }
-          });
-        },
-        error: () => {
-          this.isSubmitting = false;
+    this.isSubmitting = true;
+    this.errors = {}; // Reseteo de errores antes del envío
+
+    this.authService.login(validationResult.data).subscribe({
+      next: () => {
+        // MEJORA 2: Verificación de roles prioritaria
+        const role = this.authService.getUserRole();
+
+        if (role === 'ADMINISTRADOR') {
+          this.router.navigate(['/admin']);
+        } else if (role === 'DOCENTE') {
+          this.router.navigate(['/docente']);
+        } else if (role === 'ANALISTA') {
           this.router.navigate(['/formulario']);
         }
-      });
-    },
-    error: (err) => {
+        this.simuladorService.obtenerSesionActiva().subscribe({
+          next: (sesion) => {
+            this.isSubmitting = false;
+            this.notificationService.success('¡Bienvenido!', 'Retomando tu sesión actual');
+
+            this.simuladorService.obtenerFaseActual().subscribe(fase => {
+              if (fase) {
+                this.router.navigate(['/simulador/fase', fase.numero, 'alternativas']);
+              } else {
+                this.router.navigate(['/formulario']);
+              }
+            });
+          },
+          error: () => {
+            this.isSubmitting = false;
+            this.router.navigate(['/formulario']);
+          }
+        });
+      },
+      error: (err) => {
         this.isSubmitting = false;
         this.cdr.detectChanges();
         console.error('Error en el login:', err);
-        this.notificationService.error('Error de autenticación', 'Correo o contraseña incorrectos. Intenta de nuevo.');
+        this.notificationService.error(
+          'Error de autenticación',
+          'Credenciales incorrectas. Verifica tu correo institucional y contraseña.'
+        );
       }
     });
   }

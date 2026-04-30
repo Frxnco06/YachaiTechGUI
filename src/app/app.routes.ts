@@ -8,6 +8,9 @@ import { FaseLecturaComponent } from './pages/simulador/fase-lectura/fase-lectur
 import { FaseAlternativasComponent } from './pages/simulador/fase-alternativas/fase-alternativas';
 import { FeedbackComponent } from './pages/simulador/feedback/feedback';
 import { authGuard } from './core/guards/auth.guard';
+import { DocenteDashboardComponent } from './components/docente-dashboard/docente-dashboard';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard';
+import { roleGuard } from './core/guards/role.guard';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,5 +21,17 @@ export const routes: Routes = [
   { path: 'simulador/fase/:numero/lectura', component: FaseLecturaComponent, canActivate: [authGuard] },
   { path: 'simulador/fase/:numero/alternativas', component: FaseAlternativasComponent, canActivate: [authGuard] },
   { path: 'simulador/feedback', component: FeedbackComponent, canActivate: [authGuard] },
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
-];
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { 
+    path: 'admin', 
+    component: AdminDashboardComponent,
+    canActivate: [roleGuard],
+    data: { expectedRole: 'ADMINISTRADOR' }  
+  },
+  {
+path: 'docente', 
+    component: DocenteDashboardComponent,
+    canActivate: [roleGuard],
+    data: { expectedRole: 'DOCENTE' } 
+  }
+];

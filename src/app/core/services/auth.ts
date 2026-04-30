@@ -17,7 +17,19 @@ export class AuthService {
     );
   }
 
-  registrar(data: RegistroRequest): Observable<RegistroResponse> {
+getUserRole(): string | null {
+  const token = localStorage.getItem('yachay_token');
+  if (!token) return null;
+
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.rol || null; 
+  } catch (e) {
+    return null;
+  }
+}
+
+registrar(data: RegistroRequest): Observable<RegistroResponse> {
     return this.http.post<RegistroResponse>(`${this.URL}/register`, data);
   }
 
